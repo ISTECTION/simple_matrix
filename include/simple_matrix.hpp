@@ -1,16 +1,18 @@
 #ifndef _SIMPLE_MATRIX_HPP
 #define _SIMPLE_MATRIX_HPP
-#include <vector>
+#include "simple_vector.hpp"
 
 namespace simple {
 
     template <class T>
-    class matrix : std::vector<std::vector<T>>
+    class matrix : public std::vector<std::vector<T>>
     {
     private:
         using ::std::vector<std::vector<T>>::vector;
     public:
-
+        simple::vector<T> get_row (std::size_t _row) const {
+            return simple::vector<T>(this->at(_row));
+        }
     };
 
 }

@@ -1,8 +1,7 @@
 #ifndef _SIMPLE_VECTOR_HPP
 #define _SIMPLE_VECTOR_HPP
-#include <numeric>          /// std::accumulate
+#include <numeric>          /// std::inner_product
 #include <vector>           /// std::vector
-
 
 namespace simple {
 
@@ -12,6 +11,12 @@ namespace simple {
     private:
         using ::std::vector<T>::vector;
     public:
+        constexpr vector (const std::vector<T>& _v) noexcept
+            : std::vector<T>::vector(_v) { }
+
+        constexpr vector (std::vector<T>&& _v) noexcept
+            : std::vector<T>::vector(std::move(_v)) { }
+
         constexpr auto norm () const noexcept {
             return sqrt(
                 std::inner_product(
