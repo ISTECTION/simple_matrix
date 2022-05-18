@@ -1,12 +1,10 @@
-Param (
-    [Parameter(Mandatory=$false)]
-        [switch] $doc=$false,
+Param
+(
+    [Parameter(Mandatory=$false)] [string]
+        $build_path='build',
 
-    [Parameter(Mandatory=$false)]
-        [string] $build_path='build',
-
-    [Parameter(Mandatory=$false)]
-        [ValidateSet('MinGW','default')] $compile='default'
+    [Parameter(Mandatory=$false)] [ValidateSet('MinGW','default')]
+        $compile='default'
 )
 
 if (Test-Path -Path $build_path) {
