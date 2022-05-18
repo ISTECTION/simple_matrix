@@ -4,11 +4,12 @@ set(SIMPLE_MATRIX_PROJECT_NAME    "simple_matrix")
 string(MAKE_C_IDENTIFIER ${SIMPLE_MATRIX_PROJECT_NAME} SIMPLE_MATRIX_PROJECT_ID)
 string(TOUPPER           ${SIMPLE_MATRIX_PROJECT_NAME} SIMPLE_MATRIX_PROJECT_ID)
 
-
 project(${SIMPLE_MATRIX_PROJECT_NAME}
     DESCRIPTION     "algebraic functions for matrix and vector"
     HOMEPAGE_URL    "https://github.com/ISTECTION/simple_matrix"
     LANGUAGES CXX)
+
+add_subdirectory(src)
 
 # ----------------------------- Подведение итогов ------------------------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
