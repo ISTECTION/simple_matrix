@@ -12,6 +12,9 @@ namespace simple {
     private:
         using ::std::vector<std::vector<T>>::vector;
     public:
+        std::size_t size_row     () const noexcept { return this->size(); }
+        std::size_t size_collumn () const noexcept { return this->empty() ? 0 : this->cbegin()->size(); }
+
         simple::vector<T> get_row (std::size_t _row) const {
             return simple::vector<T>(this->at(_row));
         }
@@ -22,13 +25,27 @@ namespace simple {
                 throw exception(INDEX_COLLUMN_ERROR);
             }
             simple::vector<T> _col_v(this->size());
-            for (std::size_t i = 0; i < this->size(); i++)
+            for (size_t i = 0; i < this->size(); i++)
                 _col_v[i] = (*this)[i][_col];
             return _col_v;
         }
 
-        std::size_t size_row     () const noexcept { return this->size(); }
-        std::size_t size_collumn () const noexcept { return this->empty() ? 0 : this->cbegin()->size(); }
+        void set_row (std::size_t _row, const simple::vector<T>& _row_v) {
+            if (_row >= size_row()) {
+                using enum ::exception::TYPE;
+                throw exception(INDEX_ROW_ERROR);
+            }
+            (*this)[_row] = _row_v;
+        }
+
+        void set_collumn (std::size_t _col, const simple::vector<T>& _col_v) {
+            if (_col >= size_collumn()) {
+                using enum ::exception::TYPE;
+                throw exception(INDEX_COLLUMN_ERROR);
+            }
+            for (size_t i = 0; i < this->size(); i++)
+                (*this)[i][_col] = _col_v[i];
+        }
 
         std::string pretty () const noexcept {
             if (size_row() == 0 || size_collumn() == 0) { return std::string { "empty" }; }
@@ -69,6 +86,8 @@ namespace simple {
             SetConsoleOutputCP(CP_UTF8);
             return main.str();
         }
+
+
 
 
     };

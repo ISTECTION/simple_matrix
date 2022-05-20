@@ -8,7 +8,8 @@ class exception : public std::exception
 {
 public:
     enum class TYPE {
-        INDEX_COLLUMN_ERROR = 1
+        INDEX_ROW_ERROR = 1,
+        INDEX_COLLUMN_ERROR
     };
 
 private:
@@ -21,6 +22,9 @@ public:
 
         switch (_type)
         {
+        case TYPE::INDEX_ROW_ERROR:
+            _error_t = "accessing a non-existent matrix row";
+            break;
         case TYPE::INDEX_COLLUMN_ERROR:
             _error_t = "accessing a non-existent matrix column";
             break;
