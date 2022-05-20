@@ -24,19 +24,12 @@ int main(int argc, const char *argv[]) {
     simple::vector<double_t> a(3, 2);
     std::cout << "norm vector (a) : " << a.norm() << '\n';
 
-
     simple::matrix<double> m(3, std::vector<double>(3));
     m.at(1).at(0) = 1;
     m.at(1).at(1) = 2;
     m.at(1).at(2) = 3;
 
-    std::cout << "matrix row: "     << m.size()       << '\n';
-    std::cout << "matrix collumn: " << m.at(0).size() << '\n';
 
-    std::cout << "f : [ ";
-    for (const auto& _el : m.get_row(1))
-        std::cout << _el << ", ";
-    std::cout << "]" << '\n';
-
+    std::cout << m.pretty() << '\n';
     return 0;
 }

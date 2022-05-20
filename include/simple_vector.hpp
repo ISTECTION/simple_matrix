@@ -2,6 +2,7 @@
 #define _SIMPLE_VECTOR_HPP
 #include <numeric>          /// std::inner_product
 #include <vector>           /// std::vector
+#include <cmath>            /// sqrt
 
 namespace simple {
 
@@ -13,9 +14,6 @@ namespace simple {
     public:
         constexpr vector (const std::vector<T>& _v) noexcept
             : std::vector<T>::vector(_v) { }
-
-        constexpr vector (std::vector<T>&& _v) noexcept
-            : std::vector<T>::vector(std::move(_v)) { }
 
         constexpr auto norm () const noexcept {
             return sqrt(
