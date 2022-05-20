@@ -1,20 +1,13 @@
 #ifndef _SIMPLE_MATRIX_HPP
 #define _SIMPLE_MATRIX_HPP
 #include "exception/exception.hpp"
+#include "utils/lightweight.hpp"
 #include "simple_vector.hpp"
-
-#include <iostream>             /// std::cout
-
-#include <sstream>              /// std::ostringstream
-#include <iomanip>              /// std::setw
-#include <string>               /// std::string
-
-#include <windows.h>            /// SetConsoleOutputCP()
 
 namespace simple {
 
     template <class T>
-    class matrix : public std::vector<std::vector<T>>
+    class matrix final : public std::vector<std::vector<T>>
     {
     private:
         using ::std::vector<std::vector<T>>::vector;
@@ -46,11 +39,10 @@ namespace simple {
             std::size_t size_row     = this->size_row();
             std::size_t size_collumn = this->size_collumn();
 
-            auto EQUAL = [] (T a, T b) { return (abs(a - b) < 1E-8); };
             for (size_t i = 0; i < size_row; ++i) {
                 for (size_t j = 0; j < size_collumn; ++j) {
                     double term = (*this)[i][j];
-                    osstr << (EQUAL(term, 0) ? 0 : term);
+                    osstr << (utils::EQUAL( term, 0.0 ) ? 0 : term);
                     std::string str = osstr.str();
                     osstr.str(std::string { });
                     strs.push_back(str);
@@ -61,7 +53,6 @@ namespace simple {
 
             std::size_t midwidth = (mwidth * size_row) + ((size_row + 1) << 1);
             main << "\u250c\u2500" << std::setw(midwidth - 2) << "" << "\u2500\u2510";
-
             for (size_t i = 0; i < size_row; i++) {
                 main << '\n';
                 main << "\u2502";
@@ -75,7 +66,7 @@ namespace simple {
             }
             main << '\n' << "\u2514\u2500" << std::setw(midwidth - 2) << "" << "\u2500\u2518";
 
-            SetConsoleOutputCP(65001);
+            SetConsoleOutputCP(CP_UTF8);
             return main.str();
         }
 

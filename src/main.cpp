@@ -24,6 +24,8 @@ int main(int argc, const char *argv[]) {
     simple::vector<double_t> a(3, 2);
     std::cout << "norm vector (a) : " << a.norm() << '\n';
 
+    std::cout << a.pretty() << '\n';
+
     simple::matrix<double> m(3, std::vector<double>(3));
     m.at(1).at(0) = 1;
     m.at(1).at(1) = 2;
