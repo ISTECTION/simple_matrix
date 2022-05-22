@@ -87,11 +87,49 @@ namespace simple {
             return main.str();
         }
 
+        matrix<T>& operator+= (const matrix<T>& A) {
+            std::size_t _sr = size_rows();
+            std::size_t _sc = size_collumns();
+
+            if (_sr != A.size_rows() || _sc != A.size_collumns()) {
+                using enum ::exception::TYPE;
+                throw exception(INCOMPATIBLE_SIZE_ERROR);
+            }
+
+            for (size_t i = 0; i < _sr; i++)
+            for (size_t j = 0; j < _sc; j++)
+                (*this)[i][j] += A[i][j];
+            return *this;
+        }
+
+        matrix<T>& operator-= (const matrix<T>& A) {
+            std::size_t _sr = size_rows();
+            std::size_t _sc = size_collumns();
+
+            if (_sr != A.size_rows() || _sc != A.size_collumns()) {
+                using enum ::exception::TYPE;
+                throw exception(INCOMPATIBLE_SIZE_ERROR);
+            }
+
+            for (size_t i = 0; i < _sr; i++)
+            for (size_t j = 0; j < _sc; j++)
+                (*this)[i][j] -= A[i][j];
+            return *this;
+        }
+
         matrix<T>& operator*= (double _koef) {
             std::size_t _sizecollumn = size_collumns();
             for (size_t i = 0; i < this->size(); i++)
             for (size_t j = 0; j < _sizecollumn; j++)
                 (*this)[i][j] *= _koef;
+            return *this;
+        }
+
+        matrix<T>& operator/= (double _koef) {
+            std::size_t _sizecollumn = size_collumns();
+            for (size_t i = 0; i < this->size(); i++)
+            for (size_t j = 0; j < _sizecollumn; j++)
+                (*this)[i][j] /= _koef;
             return *this;
         }
 
@@ -118,6 +156,19 @@ namespace simple {
         }
     };
 
+    template <class T>
+    matrix<T> operator+ (const matrix<T>& A, const matrix<T>& B) {
+        matrix<T> _Tmp(A);
+        _Tmp += B;
+        return _Tmp;
+    }
+
+    template <class T>
+    matrix<T> operator- (const matrix<T>& A, const matrix<T>& B) {
+        matrix<T> _Tmp(A);
+        _Tmp -= B;
+        return _Tmp;
+    }
 
     template <class T>
     matrix<T> operator* (const matrix<T>& A, const matrix<T>& B) {
@@ -138,5 +189,11 @@ namespace simple {
         return A * _koef;
     }
 
+    template <class T>
+    matrix<T> operator/ (const matrix<T>& A, T _koef) {
+        matrix<T> _Tmp(A);
+        _Tmp /= _koef;
+        return _Tmp;
+    }
 }
 #endif /// _SIMPLE_MATRIX_HPP
