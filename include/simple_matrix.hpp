@@ -201,9 +201,8 @@ namespace simple {
         return _Tmp;
     }
 
-
     template <typename T>
-    matrix<T> identity_matrix(std::size_t _Count) {
+    matrix<T> identity_matrix (std::size_t _Count) {
         matrix<T> A(_Count, std::vector<T>(_Count));
         for (size_t i = 0; i < A.size_rows(); i++)
             A[i][i] = 1;
