@@ -21,5 +21,13 @@ int main(int argc, const char *argv[]) {
     m.set_collumn(0, { 8, 7, 6 });
     std::cout << m.pretty() << '\n';
 
+    simple::matrix<double> m2(3, std::vector<double>(3));
+    m2.set_row(1, { 1, 2, 3 });
+    m2.set_collumn(0, { 8, 7, 6 });
+
+    m2 *= m;
+    std::cout << m2.pretty() << '\n';
+
+
     return 0;
 }

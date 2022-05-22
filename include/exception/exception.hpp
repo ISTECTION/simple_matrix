@@ -9,7 +9,8 @@ class exception : public std::exception
 public:
     enum class TYPE {
         INDEX_ROW_ERROR = 1,
-        INDEX_COLLUMN_ERROR
+        INDEX_COLLUMN_ERROR,
+        INCOMPATIBLE_SIZE_ERROR
     };
 
 private:
@@ -28,6 +29,10 @@ public:
         case TYPE::INDEX_COLLUMN_ERROR:
             _error_t = "accessing a non-existent matrix column";
             break;
+        case TYPE::INCOMPATIBLE_SIZE_ERROR:
+            _error_t = "incompatible matrix sizes";
+            break;
+
         default:
             _error_t = "no case for this type of error";
         }
