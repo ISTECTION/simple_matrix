@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _SIMPLE_MATRIX_HPP
 #define _SIMPLE_MATRIX_HPP
 #include "exception/exception.hpp"
