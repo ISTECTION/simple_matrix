@@ -50,18 +50,16 @@ namespace simple {
                 mwidth = nl > mwidth ? nl : mwidth;
             }
             size_t midwidth = (mwidth * _count) + ((_count + 1) << 1);
-            main << "\u250c\u2500" << std::setw(midwidth - 2) << "" << "\u2500\u2510";
-            main << '\n' << "\u2502";
+            main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
+            main << '\n' << "│";
             for (size_t i = 0; i < _count; i++) {
                 std::string str = strs[i];
                 int wlen = (str.size() + mwidth + 1) >> 1;
                 main << "  " << std::setw(wlen) << str
                     << std::setw(mwidth - wlen) << "";
             }
-            main << "  \u2502";
-            main << '\n' << "\u2514\u2500"
-                << std::setw(midwidth - 2)
-                << "" << "\u2500\u2518";
+            main << "  │";
+            main << '\n' << "└─" << std::setw(midwidth - 2) << "" << "─┘";
 
             SetConsoleOutputCP(CP_UTF8);
             return main.str();

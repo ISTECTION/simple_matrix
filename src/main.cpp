@@ -11,27 +11,15 @@ int main(int argc, const char *argv[]) {
     using ::std::complex;
     using ::std::double_t;
 
-    // simple::vector<complex<double_t>> f(3, 2i * 1i + 8.8i);
-    // f.at(0) = std::complex<double_t> { 2, 3 };
-
-    // std::cout << "norm vector: " << f.norm() << std::endl;
-
-    // for (const auto& _elem : f)
-    //     std::cout
-    //         << _elem.real() << " "
-    //         << _elem.imag() << '\n';
-
     simple::vector<double_t> a(3, 2);
     std::cout << "norm vector (a) : " << a.norm() << '\n';
-
     std::cout << a.pretty() << '\n';
 
     simple::matrix<double> m(3, std::vector<double>(3));
-    m.at(1).at(0) = 1;
-    m.at(1).at(1) = 2;
-    m.at(1).at(2) = 3;
-
-
+    m.set_row(1, { 1, 2, 3 });
     std::cout << m.pretty() << '\n';
+    m.set_collumn(0, { 8, 7, 6 });
+    std::cout << m.pretty() << '\n';
+
     return 0;
 }
