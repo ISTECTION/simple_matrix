@@ -155,7 +155,11 @@ namespace simple {
             }
             return *this;
         }
+
     };
+
+    template <class T>
+    std::ostream& operator<< (std::ostream& out, const matrix<T>& A) { return out << A.pretty(); }
 
     template <class T>
     matrix<T> operator+ (const matrix<T>& A, const matrix<T>& B) {
@@ -195,6 +199,15 @@ namespace simple {
         matrix<T> _Tmp(A);
         _Tmp /= _koef;
         return _Tmp;
+    }
+
+
+    template <typename T>
+    matrix<T> identity_matrix(std::size_t _Count) {
+        matrix<T> A(_Count, std::vector<T>(_Count));
+        for (size_t i = 0; i < A.size_rows(); i++)
+            A[i][i] = 1;
+        return A;
     }
 }
 #endif /// _SIMPLE_MATRIX_HPP
