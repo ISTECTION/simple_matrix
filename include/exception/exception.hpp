@@ -9,6 +9,8 @@ class exception : public std::exception
 public:
     enum class TYPE {
         INDEX_ROW_ERROR = 1,
+        NOT_SQUARE,
+
         INDEX_COLLUMN_ERROR,
         INCOMPATIBLE_SIZE_ERROR
     };
@@ -24,17 +26,23 @@ public:
         switch (_type)
         {
         case TYPE::INDEX_ROW_ERROR:
-            _error_t = "accessing a non-existent matrix row";
+            _error_t = {  "accessing a non-existent matrix row"   };
             break;
+
+        case TYPE::NOT_SQUARE:
+            _error_t = {        "matrix must be square"           };
+            break;
+
         case TYPE::INDEX_COLLUMN_ERROR:
-            _error_t = "accessing a non-existent matrix column";
+            _error_t = { "accessing a non-existent matrix column" };
             break;
+
         case TYPE::INCOMPATIBLE_SIZE_ERROR:
-            _error_t = "incompatible matrix sizes";
+            _error_t = {       "incompatible matrix sizes"        };
             break;
 
         default:
-            _error_t = "no case for this type of error";
+            _error_t = {     "no case for this type of error"     };
         }
     }
 
