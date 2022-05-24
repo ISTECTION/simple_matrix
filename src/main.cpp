@@ -30,6 +30,7 @@ int main(int argc, const char *argv[]) {
     m2 *= m;
     std::cout << m2 << '\n';
     std::cout << m2.transpose() << '\n';
+    std::cout << m2.submatrix(1, 1) << '\n';
 
     std::cout << simple::identity_matrix<int>(5) << '\n';
 
