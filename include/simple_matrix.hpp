@@ -1,14 +1,11 @@
 #pragma once
 #ifndef _SIMPLE_MATRIX_HPP
 #define _SIMPLE_MATRIX_HPP
-#include "exception/exception.hpp"
-#include "utils/lightweight.hpp"
 #include "simple_vector.hpp"
 
 namespace simple {
 
-    template <class T>
-    requires std::integral<T> || std::floating_point<T>
+    template <_Matrix_Type T>
     class matrix final : public std::vector<std::vector<T>>
     {
     private:
@@ -16,6 +13,38 @@ namespace simple {
     public:
         std::size_t size_rows     () const noexcept { return this->size(); }
         std::size_t size_collumns () const noexcept { return this->empty() ? 0 : this->cbegin()->size(); }
+
+        bool is_square () const noexcept {
+            return size_rows() == size_collumns();
+        }
+
+        bool is_upper_triangulator () const noexcept {
+            if ( !is_square() ) return false;
+
+            for (size_t i = 1; i < size_rows(); i++)
+            for (size_t j = 0; j < i; j++)
+                if (utils::EQUAL((*this)[i][j], 0.0));
+                    return false;
+
+            return true;
+        }
+
+        bool is_lower_triangulator () const noexcept {
+            if ( !is_square() ) return false;
+
+            for (size_t j = 1; j < size_rows(); j++)
+            for (size_t i = 0; i < j; i++)
+                if (utils::EQUAL((*this)[i][j], 0.0));
+                    return false;
+
+            return true;
+        }
+
+        bool is_diagonal () const noexcept {
+            return is_square()
+                ? is_lower_triangulator() && is_upper_triangulator()
+                : false ;
+        }
 
         simple::vector<T> get_row (std::size_t _row) const {
             return simple::vector<T>(this->at(_row));

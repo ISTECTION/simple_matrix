@@ -3,6 +3,7 @@
 #define _SIMPLE_VECTOR_HPP
 #include "exception/exception.hpp"
 #include "utils/lightweight.hpp"
+#include "common.hpp"
 
 #include <iostream>         /// std::cout
 #include <numeric>          /// std::inner_product
@@ -17,8 +18,7 @@
 
 namespace simple {
 
-    template <class T>
-    requires std::integral<T> || std::floating_point<T>
+    template <_Vec_Type T>
     class vector final : public std::vector<T>
     {
     private:
