@@ -20,6 +20,7 @@ int main(int argc, const char *argv[]) {
     m.set_row(1, { 1, 2, 3 });
     std::cout << m.pretty() << '\n';
     m.set_collumn(0, { 8, 7, 6 });
+    
     std::cout << m.pretty() << '\n';
 
     simple::matrix<double> m2(3, std::vector<double>(3));

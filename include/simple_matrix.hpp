@@ -78,6 +78,17 @@ namespace simple {
                 (*this)[i][_col] = _col_v[i];
         }
 
+        T trace() const {
+            if ( !is_square() ) {
+                using enum ::exception::TYPE;
+                throw exception(NOT_SQUARE);
+            }
+            T _trace = 0;
+            for (size_t i = 0; i < size_rows(); i++)
+                _trace += (*this)[i][i];
+            return _trace;
+        }
+
         std::string pretty () const noexcept {
             std::size_t size_rows     = this->size_rows();
             std::size_t size_collumns = this->size_collumns();
