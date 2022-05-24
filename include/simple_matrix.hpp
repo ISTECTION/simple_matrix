@@ -11,12 +11,13 @@ namespace simple {
     private:
         using ::std::vector<std::vector<T>>::vector;
     public:
+        constexpr matrix(std::size_t _sr, std::size_t _sc) noexcept
+            : std::vector<std::vector<T>>::vector(_sr, std::vector<T>(_sc)) { }
+
         std::size_t size_rows     () const noexcept { return this->size(); }
         std::size_t size_collumns () const noexcept { return this->empty() ? 0 : this->cbegin()->size(); }
 
-        bool is_square () const noexcept {
-            return size_rows() == size_collumns();
-        }
+        bool is_square () const noexcept { return size_rows() == size_collumns(); }
 
         bool is_upper_triangulator () const noexcept {
             if ( !is_square() ) return false;
@@ -87,6 +88,35 @@ namespace simple {
             for (size_t i = 0; i < size_rows(); i++)
                 _trace += (*this)[i][i];
             return _trace;
+        }
+
+        matrix<T> transpose () const {
+            std::size_t _sr = size_rows();
+            std::size_t _sc = size_collumns();
+            matrix<T> _matrix(_sc, _sr);
+
+            for (size_t i = 0; i < _sr; i++)
+            for (size_t j = 0; j < _sc; j++)
+                _matrix[j][i] = (*this)[i][j];
+
+            return _matrix;
+        }
+
+        matrix<T> submatrix (std::size_t i, std::size_t j) const {
+            std::size_t _sr = size_rows();
+            std::size_t _sc = size_collumns();
+            matrix<T> _matrix(_sr - 1, _sc - 1);
+
+            std::size_t _i = 0;
+            for (size_t _row = 0; _row < _sr; _row++) {
+                if (_row == i) continue;
+                for (size_t _col = 0, _j = 0; _col < _sc; _col++) {
+                    if (_col == j) continue;
+                    _matrix[_i][_j++] = (*this)[_row][_col];
+                }
+                _i++;
+            }
+            return _matrix;
         }
 
         std::string pretty () const noexcept {
