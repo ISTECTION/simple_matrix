@@ -32,11 +32,5 @@ int main(int argc, const char *argv[]) {
     std::cout << m2.transpose() << '\n';
     std::cout << m2.submatrix(1, 1) << '\n';
 
-    std::cout << simple::identity_matrix<int>(5) << '\n';
-
-    std::cout << "is_diagonal: " << std::boolalpha << m2.is_square() << '\n';
-
-
-
     return 0;
 }
