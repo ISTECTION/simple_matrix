@@ -8,6 +8,7 @@
 namespace simple {
 
     template <class T>
+    requires std::integral<T> || std::floating_point<T>
     class matrix final : public std::vector<std::vector<T>>
     {
     private:

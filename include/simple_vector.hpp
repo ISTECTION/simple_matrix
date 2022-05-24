@@ -18,6 +18,7 @@
 namespace simple {
 
     template <class T>
+    requires std::integral<T> || std::floating_point<T>
     class vector final : public std::vector<T>
     {
     private:
