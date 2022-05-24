@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <complex>
+#include <iomanip>
 
 int main(int argc, const char *argv[]) {
 
@@ -29,5 +30,8 @@ int main(int argc, const char *argv[]) {
     std::cout << m2 << '\n';
 
     std::cout << simple::identity_matrix<int>(5) << '\n';
+
+    std::cout << "is_diagonal: " << std::boolalpha << m2.is_square() << '\n';
+
     return 0;
 }
