@@ -11,7 +11,10 @@ namespace simple {
     private:
         using ::std::vector<std::vector<T>>::vector;
     public:
-        std::size_t size_rows     () const noexcept { return this->size(); }
+        constexpr matrix(std::size_t _sr, std::size_t _sc) noexcept
+            : std::vector<std::vector<T>>::vector(_sr, std::vector<T>(_sc)) { }
+
+        std::size_t size_rows () const noexcept { return this->size(); }
         std::size_t size_collumns () const noexcept { return this->empty() ? 0 : this->cbegin()->size(); }
 
         bool is_square () const noexcept {
@@ -87,6 +90,18 @@ namespace simple {
             for (size_t i = 0; i < size_rows(); i++)
                 _trace += (*this)[i][i];
             return _trace;
+        }
+
+        matrix<T> transpose () const {
+            std::size_t _sr = size_rows();
+            std::size_t _sc = size_collumns();
+            matrix<T> _matrix(_sc, _sr);
+
+            for (size_t i = 0; i < _sr; i++)
+            for (size_t j = 0; j < _sc; j++)
+                _matrix[j][i] = (*this)[i][j];
+
+            return _matrix;
         }
 
         std::string pretty () const noexcept {
