@@ -32,5 +32,13 @@ int main(int argc, const char *argv[]) {
     std::cout << m2.transpose() << '\n';
     std::cout << m2.submatrix(1, 1) << '\n';
 
+
+    simple::matrix<double> m_det(3, std::vector<double>(3));
+    m_det.set_row(0, { 1, 2, 3});
+    m_det.set_row(1, { 6, 5, 4});
+    m_det.set_row(2, { 1, 4, 5});
+    std::cout << "determinant: " << m_det.determinant() << '\n';
+
+
     return 0;
 }
