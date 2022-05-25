@@ -44,6 +44,13 @@ namespace simple {
 
         matrix<T> minor_matrix () const;
 
+        matrix<T> cofactor_matrix () const;
+
+        matrix<T> adj () const;
+
+        matrix<T> invert () const;
+
+
         T trace() const;
 
         T minor_determinant (std::size_t i, std::size_t j) const;
@@ -193,7 +200,44 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    T matrix<T>::trace() const {
+    matrix<T> matrix<T>::cofactor_matrix () const {
+        matrix<T> A = minor_matrix();
+
+        for (size_t i = 0; i < size_rows(); i++)
+        for (size_t j = i + 1; j < size_collumns(); j++)
+            if ((i + j) % 2) {
+                A[i][j] = -A[i][j];
+                A[j][i] = -A[j][i];
+
+            }
+        return A;
+    }
+
+    template <_Matrix_Type T>
+    matrix<T> matrix<T>::adj () const {
+        return cofactor_matrix().transpose();
+    }
+
+    template <_Matrix_Type T>
+    matrix<T> matrix<T>::invert () const {
+        using enum ::exception::TYPE;
+        if ( !is_square() )
+            throw exception(NOT_SQUARE);
+
+        T _det = determinant();
+        if (_det == 0)
+            throw exception(NOT_INVERTIBLE);
+
+        return size_rows() == 2
+            ? matrix<T> {
+                { (*this)[1][1], -(*this)[0][1], },
+                { (*this)[1][0], -(*this)[0][0], }
+            }
+            : adj() / _det;
+    }
+
+    template <_Matrix_Type T>
+    T matrix<T>::trace () const {
         if ( !is_square() ) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);

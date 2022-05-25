@@ -10,7 +10,7 @@ public:
     enum class TYPE {
         INDEX_ROW_ERROR = 1,
         NOT_SQUARE,
-
+        NOT_INVERTIBLE,
         INDEX_COLLUMN_ERROR,
         INCOMPATIBLE_SIZE_ERROR
     };
@@ -31,6 +31,10 @@ public:
 
         case TYPE::NOT_SQUARE:
             _error_t = {        "matrix must be square"           };
+            break;
+
+        case TYPE::NOT_INVERTIBLE:
+            _error_t = {       "matrix is not invertible"         };
             break;
 
         case TYPE::INDEX_COLLUMN_ERROR:
