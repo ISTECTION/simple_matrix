@@ -42,6 +42,7 @@ namespace simple {
 
         matrix<T> submatrix (std::size_t i, std::size_t j) const;
 
+        matrix<T> minor_matrix () const;
 
         T trace() const;
 
@@ -174,6 +175,21 @@ namespace simple {
             _i++;
         }
         return _matrix;
+    }
+
+    template <_Matrix_Type T>
+    matrix<T> matrix<T>::minor_matrix () const {
+        if ( !is_square() ) {
+            using enum ::exception::TYPE;
+            throw exception(NOT_SQUARE);
+        }
+        std::size_t _sr = size_rows();
+        std::size_t _sc = size_collumns();
+        matrix<T> A(_sr, _sc);
+        for (size_t i = 0; i < _sr; ++i)
+        for (size_t j = 0; j < _sc; ++j)
+            A[i][j] = minor_determinant(i, j);
+        return A;
     }
 
     template <_Matrix_Type T>
