@@ -119,6 +119,12 @@ namespace simple {
             return _matrix;
         }
 
+        T minor_determinant (std::size_t i, std::size_t j) const {
+            using enum ::exception::TYPE;
+            if ( !is_square() )  throw exception(NOT_SQUARE);
+            if (size_rows() < 2) throw exception(INCOMPATIBLE_SIZE_ERROR);
+            return submatrix(i, j).determinant();
+        }
 
         T determinant () const {
             if ( !is_square() ) {
