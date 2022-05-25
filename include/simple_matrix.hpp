@@ -126,6 +126,11 @@ namespace simple {
             return submatrix(i, j).determinant();
         }
 
+        T cofactor (std::size_t i, std::size_t j) const {
+            T _det = minor_determinant(i, j);
+            return ((i + j) % 2 ? -1 : 1) * _det;
+        }
+
         T determinant () const {
             if ( !is_square() ) {
                 using enum ::exception::TYPE;

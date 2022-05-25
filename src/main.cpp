@@ -38,7 +38,8 @@ int main(int argc, const char *argv[]) {
     m_det.set_row(1, { 6, 5, 4});
     m_det.set_row(2, { 1, 4, 5});
     std::cout << "determinant: " << m_det.determinant() << '\n';
-    std::cout << "minor_det: " << m_det.minor_determinant(1, 1) << '\n';
+    std::cout << "minor_det: " << m_det.minor_determinant(1, 0) << '\n';
+    std::cout << "cofactor: " << m_det.cofactor(1, 0) << '\n';
 
     return 0;
 }
