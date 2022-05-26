@@ -16,6 +16,10 @@ int main(int argc, const char *argv[]) {
     std::cout << "norm vector (a) : " << a.norm() << '\n';
     std::cout << a.pretty() << '\n';
 
+    simple::read(a, std::string { "_testing_file/vector.txt" });
+    std::cout << a << std::endl;
+
+
     simple::matrix<double> m(3, std::vector<double>(3));
     m.set_row(1, { 1, 2, 3 });
     std::cout << m.pretty() << '\n';

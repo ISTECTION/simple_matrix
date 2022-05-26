@@ -294,38 +294,45 @@ namespace simple {
 
         if (size_rows == 0 || size_collumns == 0) { return std::string { "empty" }; }
 
-        std::ostringstream osstr, main;
-        std::vector<std::string> strs;
-        std::size_t mwidth = 0;
+        if constexpr (std::is_integral<T>::value or std::is_floating_point<T>::value) {
 
-        for (size_t i = 0; i < size_rows; ++i) {
-            for (size_t j = 0; j < size_collumns; ++j) {
-                double term = (*this)[i][j];
-                osstr << (utils::EQUAL( term, 0.0 ) ? 0 : term);
-                std::string str = osstr.str();
-                osstr.str(std::string { });
-                strs.push_back(str);
-                std::size_t nl = str.size();
-                mwidth = nl > mwidth ? nl : mwidth;
+            std::ostringstream osstr, main;
+            std::vector<std::string> strs;
+            std::size_t mwidth = 0;
+
+            for (size_t i = 0; i < size_rows; ++i) {
+                for (size_t j = 0; j < size_collumns; ++j) {
+                    double term = (*this)[i][j];
+                    osstr << (utils::EQUAL( term, 0.0 ) ? 0 : term);
+                    std::string str = osstr.str();
+                    osstr.str(std::string { });
+                    strs.push_back(str);
+                    std::size_t nl = str.size();
+                    mwidth = nl > mwidth ? nl : mwidth;
+                }
             }
-        }
 
-        std::size_t midwidth = (mwidth * size_rows) + ((size_rows + 1) << 1);
-        main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
-        for (size_t i = 0; i < size_rows; i++) {
-            main << '\n' << "│";
-            for (size_t j = 0; j < size_collumns; j++) {
-                std::string str = strs[i * size_collumns + j];
-                int wlen = (str.size() + mwidth + 1) >> 1;
-                main << "  " << std::setw(wlen) << str
-                    << std::setw(mwidth - wlen) << "";
+            std::size_t midwidth = (mwidth * size_rows) + ((size_rows + 1) << 1);
+            main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
+            for (size_t i = 0; i < size_rows; i++) {
+                main << '\n' << "│";
+                for (size_t j = 0; j < size_collumns; j++) {
+                    std::string str = strs[i * size_collumns + j];
+                    int wlen = (str.size() + mwidth + 1) >> 1;
+                    main << "  " << std::setw(wlen) << str
+                        << std::setw(mwidth - wlen) << "";
+                }
+                main << "  │";
             }
-            main << "  │";
-        }
-        main << '\n' << "└─" << std::setw(midwidth - 2) << "" << "─┘";
+            main << '\n' << "└─" << std::setw(midwidth - 2) << "" << "─┘";
 
-        SetConsoleOutputCP(CP_UTF8);
-        return main.str();
+            SetConsoleOutputCP(CP_UTF8);
+            return main.str();
+
+        } else {
+            return
+            std::string { "I can't process this type" };
+        }
     }
 
     template <_Matrix_Type T>
@@ -401,50 +408,50 @@ namespace simple {
         return *this;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     std::ostream& operator<< (std::ostream& out, const matrix<T>& A) { return out << A.pretty(); }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator+ (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
         _Tmp += B;
         return _Tmp;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator- (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
         _Tmp -= B;
         return _Tmp;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator* (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
         _Tmp *= B;
         return _Tmp;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator* (const matrix<T>& A, T _koef) {
         matrix<T> _Tmp(A);
         _Tmp *= _koef;
         return _Tmp;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator* (T _koef, const matrix<T>& A) {
         return A * _koef;
     }
 
-    template <class T>
+    template <_Matrix_Type T>
     matrix<T> operator/ (const matrix<T>& A, T _koef) {
         matrix<T> _Tmp(A);
         _Tmp /= _koef;
         return _Tmp;
     }
 
-    template <typename T>
+    template <_Matrix_Type T>
     matrix<T> identity_matrix (std::size_t _Count) {
         matrix<T> A(_Count, std::vector<T>(_Count));
         for (size_t i = 0; i < A.size_rows(); i++)

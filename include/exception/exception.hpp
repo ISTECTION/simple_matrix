@@ -12,7 +12,8 @@ public:
         NOT_SQUARE,
         NOT_INVERTIBLE,
         INDEX_COLLUMN_ERROR,
-        INCOMPATIBLE_SIZE_ERROR
+        INCOMPATIBLE_SIZE_ERROR,
+        FILE_OPENING_ERROR
     };
 
 private:
@@ -43,6 +44,10 @@ public:
 
         case TYPE::INCOMPATIBLE_SIZE_ERROR:
             _error_t = {       "incompatible matrix sizes"        };
+            break;
+
+        case TYPE::FILE_OPENING_ERROR:
+            _error_t = {            "there's no file"            };
             break;
 
         default:
