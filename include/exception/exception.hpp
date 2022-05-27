@@ -13,7 +13,8 @@ public:
         NOT_INVERTIBLE,
         INDEX_COLLUMN_ERROR,
         INCOMPATIBLE_SIZE_ERROR,
-        FILE_OPENING_ERROR
+        FILE_OPENING_ERROR,
+        LITTLE_DATA_ERROR
     };
 
 private:
@@ -47,7 +48,11 @@ public:
             break;
 
         case TYPE::FILE_OPENING_ERROR:
-            _error_t = {            "there's no file"            };
+            _error_t = {            "there's no file"             };
+            break;
+
+        case TYPE::LITTLE_DATA_ERROR:
+            _error_t = {  "there is not enough data in the file"  };
             break;
 
         default:

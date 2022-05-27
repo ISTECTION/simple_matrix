@@ -28,7 +28,7 @@ namespace simple {
         constexpr vector (const std::vector<T>& _v) noexcept
             : std::vector<T>::vector(_v) { }
 
-        constexpr auto norm () const noexcept;
+        [[nodiscard]] constexpr auto norm () const noexcept;
 
         std::string pretty () const noexcept;
     };
@@ -91,6 +91,26 @@ namespace simple {
                 std::istream_iterator<U>(),
                 std::back_inserter(_vec));
             fin.close();
+        } else {
+            using enum ::exception::TYPE;
+            throw exception(FILE_OPENING_ERROR);
+        }
+    }
+
+    template <_Read_type T, _Vec_Type U>
+    void read (vector<U>& _vec, T _path, std::size_t _count) {
+
+        std::ifstream fin(_path);
+        if (fin.is_open()) {
+            _vec.resize(_count);
+
+            std::size_t _Count;
+            for (_Count = 0; fin >> _vec[_Count] && _Count < _count; _Count++);
+
+            if (_Count != _count) {
+                using enum ::exception::TYPE;
+                throw exception(LITTLE_DATA_ERROR);
+            }
         } else {
             using enum ::exception::TYPE;
             throw exception(FILE_OPENING_ERROR);
