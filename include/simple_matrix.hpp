@@ -312,7 +312,7 @@ namespace simple {
                 }
             }
 
-            std::size_t midwidth = (mwidth * size_rows) + ((size_rows + 1) << 1);
+            std::size_t midwidth = (mwidth * size_collumns) + ((size_collumns + 1) << 1);
             main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
             for (size_t i = 0; i < size_rows; i++) {
                 main << '\n' << "│";
@@ -458,5 +458,39 @@ namespace simple {
             A[i][i] = 1;
         return A;
     }
+
+    template <_Read_type T, _Matrix_Type U>
+    void read (matrix<U>& _matrix, T _path) {
+
+        std::ifstream ifile(_path);
+        if (ifile.is_open()) {
+            std::streamoff _size_rows = std::count(
+                std::istreambuf_iterator<char>(ifile),
+                std::istreambuf_iterator<char>(), '\n'
+            );
+            ifile.clear();
+            ifile.seekg(0, std::ios::beg);
+
+            _matrix.clear();
+            _matrix.resize(_size_rows + 1);
+
+            std::string _line;
+            std::size_t _cur_row = 0;           /// ДОДЕЛАТЬ ПРОВЕРКУ, ЧТО В КАЖДОЙ СТРОКЕ РАВНОЕ КОЛИЧЕСТВО ЭЛЕМЕНТОВ
+            while (std::getline(ifile, _line)) {
+                std::istringstream _istream(_line);
+                std::copy(
+                    std::istream_iterator<U>(_istream),
+                    std::istream_iterator<U>(),
+                    std::back_inserter(_matrix[_cur_row])
+                );
+                _cur_row++;
+            }
+            ifile.close();
+        } else {
+            using enum ::exception::TYPE;
+            throw exception(FILE_OPENING_ERROR);
+        }
+    }
+
 }
 #endif /// _SIMPLE_MATRIX_HPP

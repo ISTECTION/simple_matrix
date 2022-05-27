@@ -22,6 +22,10 @@ int main(int argc, const char *argv[]) {
     simple::read(a, std::string { "_testing_file/vector2.txt" }, 5);
     std::cout << a << std::endl;
 
+    simple::matrix<double> matrix_read;
+    read(matrix_read, std::string { "_testing_file/matrix.txt" });
+    std::cout << matrix_read << '\n';
+
 
     simple::matrix<double> m(3, std::vector<double>(3));
     m.set_row(1, { 1, 2, 3 });
