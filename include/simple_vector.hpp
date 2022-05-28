@@ -100,17 +100,17 @@ namespace simple {
     template <_Read_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path, std::size_t _count) {
 
-        std::ifstream fin(_path);
-        if (fin.is_open()) {
+        std::ifstream i_file(_path);
+        if (i_file.is_open()) {
             _vec.resize(_count);
 
-            std::size_t _Count;
-            for (_Count = 0; fin >> _vec[_Count] && _Count < _count; _Count++);
-
+            std::size_t _Count = 0;
+            while (_Count < _count && i_file >> _vec[_Count]) { _Count++; }
             if (_Count != _count) {
                 using enum ::exception::TYPE;
                 throw exception(LITTLE_DATA_ERROR);
             }
+            i_file.close();
         } else {
             using enum ::exception::TYPE;
             throw exception(FILE_OPENING_ERROR);
