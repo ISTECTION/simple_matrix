@@ -502,5 +502,22 @@ namespace simple {
         }
     }
 
+    template <_File_type T, _Matrix_Type U>
+    void write (const matrix<U>& _matrix, T _path) {
+
+        std::ofstream o_file(_path);
+        if (o_file.is_open()) {
+            for (const auto& _row : _matrix) {
+                for (const auto& _elem : _row)
+                    o_file << _elem << ' ';
+                o_file << '\n';
+            }
+            o_file.close();
+        } else {
+            using enum ::exception::TYPE;
+            throw exception(FILE_OPENING_ERROR);
+        }
+    }
+
 }
 #endif /// _SIMPLE_MATRIX_HPP

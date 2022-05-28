@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iterator>
 
+#include <unordered_map>    /// std::unordered_map
 #include <iostream>         /// std::cout
 #include <numeric>          /// std::inner_product
 #include <sstream>          /// std::ostringstream
@@ -19,6 +20,8 @@
 /// ----------------- C headers ----------------- ///
 #include <windows.h>        /// SetConsoleOutputCP()
 /// ----------------- C headers ----------------- ///
+
+enum class SEPARATOR { WHITESPACE, NEW_LINE };
 
 namespace simple {
 
@@ -122,6 +125,10 @@ namespace simple {
 
     template <_File_type T, _Vec_Type U>
     void write (const vector<U>& _vec, T _path, SEPARATOR _sep = SEPARATOR::WHITESPACE) {
+        std::unordered_map<SEPARATOR, std::string> _separator_map_write_file = {
+            { SEPARATOR::WHITESPACE, " "  },
+            { SEPARATOR::NEW_LINE,   "\n" },
+        };
 
         std::ofstream o_file(_path);
         if (o_file.is_open()) {
