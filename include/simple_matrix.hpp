@@ -484,5 +484,24 @@ namespace simple {
         }
     }
 
+    template <_Read_type T, _Matrix_Type U>
+    void read (matrix<U>& _matrix, T _path, std::size_t _row_count, std::size_t _col_count) {
+
+        std::ifstream i_file(_path);
+        if (i_file.is_open()) {
+            _matrix.clear();
+            _matrix.resize(_row_count, std::vector<U>(_col_count));
+
+            for (size_t i = 0; i < _row_count; i++)
+            for (size_t j = 0; j < _col_count; j++)
+                i_file >> _matrix[i][j];
+
+            i_file.close();
+        } else {
+            using enum ::exception::TYPE;
+            throw exception(FILE_OPENING_ERROR);
+        }
+    }
+
 }
 #endif /// _SIMPLE_MATRIX_HPP
