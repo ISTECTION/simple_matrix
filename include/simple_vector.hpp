@@ -83,14 +83,14 @@ namespace simple {
     template <_Read_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path) {
 
-        std::ifstream fin(_path);
-        if (fin.is_open()) {
+        std::ifstream i_file(_path);
+        if (i_file.is_open()) {
             _vec.clear();
             std::copy(
-                std::istream_iterator<U>(fin),
+                std::istream_iterator<U>(i_file),
                 std::istream_iterator<U>(),
                 std::back_inserter(_vec));
-            fin.close();
+            i_file.close();
         } else {
             using enum ::exception::TYPE;
             throw exception(FILE_OPENING_ERROR);

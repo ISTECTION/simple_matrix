@@ -25,6 +25,8 @@ int main(int argc, const char *argv[]) {
     simple::matrix<double> matrix_read;
     read(matrix_read, std::string { "_testing_file/matrix.txt" });
     std::cout << matrix_read << '\n';
+    std::cout << "matrix_read.size_rows(): " << matrix_read.size_rows() << '\n';
+    std::cout << "matrix_read.size_collumns(): " << matrix_read.size_collumns() << '\n';
 
 
     simple::matrix<double> m(3, std::vector<double>(3));
