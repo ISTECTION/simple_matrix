@@ -208,7 +208,6 @@ namespace simple {
             if ((i + j) % 2) {
                 A[i][j] = -A[i][j];
                 A[j][i] = -A[j][i];
-
             }
         return A;
     }
