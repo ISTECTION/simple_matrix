@@ -5,6 +5,9 @@
 #include "utils/lightweight.hpp"
 #include "common.hpp"
 
+#include <algorithm>
+#include <iterator>
+
 #include <iostream>         /// std::cout
 #include <numeric>          /// std::inner_product
 #include <sstream>          /// std::ostringstream
@@ -80,7 +83,7 @@ namespace simple {
         }
     }
 
-    template <_Read_type T, _Vec_Type U>
+    template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path) {
 
         std::ifstream i_file(_path);
@@ -97,7 +100,7 @@ namespace simple {
         }
     }
 
-    template <_Read_type T, _Vec_Type U>
+    template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path, std::size_t _count) {
 
         std::ifstream i_file(_path);
@@ -111,6 +114,21 @@ namespace simple {
                 throw exception(LITTLE_DATA_ERROR);
             }
             i_file.close();
+        } else {
+            using enum ::exception::TYPE;
+            throw exception(FILE_OPENING_ERROR);
+        }
+    }
+
+    template <_File_type T, _Vec_Type U>
+    void write (const vector<U>& _vec, T _path, SEPARATOR _sep = SEPARATOR::WHITESPACE) {
+
+        std::ofstream o_file(_path);
+        if (o_file.is_open()) {
+            std::string _separator = _separator_map_write_file.at(_sep);
+            std::ostream_iterator<U> output_it(o_file, _separator.c_str());
+            std::copy(_vec.begin(), _vec.end(), output_it);
+            o_file.close();
         } else {
             using enum ::exception::TYPE;
             throw exception(FILE_OPENING_ERROR);

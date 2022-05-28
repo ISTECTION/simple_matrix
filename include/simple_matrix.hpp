@@ -458,7 +458,7 @@ namespace simple {
         return A;
     }
 
-    template <_Read_type T, _Matrix_Type U>
+    template <_File_type T, _Matrix_Type U>
     void read (matrix<U>& _matrix, T _path) {
 
         std::ifstream i_file(_path);
@@ -483,7 +483,7 @@ namespace simple {
         }
     }
 
-    template <_Read_type T, _Matrix_Type U>
+    template <_File_type T, _Matrix_Type U>
     void read (matrix<U>& _matrix, T _path, std::size_t _row_count, std::size_t _col_count) {
 
         std::ifstream i_file(_path);
