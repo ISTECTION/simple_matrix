@@ -518,6 +518,5 @@ namespace simple {
             throw exception(FILE_OPENING_ERROR);
         }
     }
-
 }
 #endif /// _SIMPLE_MATRIX_HPP
