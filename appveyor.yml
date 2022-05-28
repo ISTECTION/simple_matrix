@@ -4,7 +4,7 @@ image:
 
 branches:
   only:
-    - master
+    - main
 
 platform:
   - x64
