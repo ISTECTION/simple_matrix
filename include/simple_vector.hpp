@@ -43,7 +43,7 @@ namespace simple {
     constexpr auto vector<T>::norm () const noexcept {
         return sqrt(
             std::inner_product(
-                this->begin(), this->end(), this->begin(), 0)
+                this->begin(), this->end(), this->begin(), 0.0)
         );
     }
 

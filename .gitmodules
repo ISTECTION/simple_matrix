@@ -3,4 +3,3 @@
 	url = https://github.com/catchorg/Catch2.git
 	branch = v2.x
 	shallow = true
-    
