@@ -1,5 +1,6 @@
-#include "catch2/catch.hpp"
+#include "../test_benchmark_data.hpp"
 #include "simple_vector.hpp"
+#include "catch2/catch.hpp"
 
 TEST_CASE("norm of the vector", "[norm]") {
     simple::vector<int> _vec1 = { 1, 2, 3, 4, 5 };
@@ -19,7 +20,7 @@ TEST_CASE("norm of the vector", "[norm]") {
 
 TEST_CASE("reading a vector from a file", "[read]") {
     simple::vector<int> _vec1;
-    simple::read(_vec1, std::string { "file/read_back_inserter.txt" });
+    simple::read(_vec1, std::string { TEST_DATA_DIRECTORY "/file/read_back_inserter.txt" });
     using Catch::Matchers::Equals;
     REQUIRE_THAT(_vec1, Equals<int>({ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }));
 }
@@ -31,12 +32,12 @@ TEST_CASE("the file does not exist", "[read]") {
 
 TEST_CASE("reading a vector multiple numbers from a file", "[read]") {
     simple::vector<int> _vec1;
-    simple::read(_vec1, std::string { "file/read_back_inserter.txt" }, 5);
+    simple::read(_vec1, std::string { TEST_DATA_DIRECTORY "/file/read_back_inserter.txt" }, 5);
     using Catch::Matchers::Equals;
     REQUIRE_THAT(_vec1, Equals<int>({ 1, 2, 3, 4, 5 }));
 }
 
 TEST_CASE("there are not so many numbers in the file", "[read]") {
     simple::vector<int> _vec1;
-    REQUIRE_THROWS(simple::read(_vec1, std::string { "file/read_back_inserter.txt" }, 100));
+    REQUIRE_THROWS(simple::read(_vec1, std::string { TEST_DATA_DIRECTORY "/file/read_back_inserter.txt" }, 100));
 }

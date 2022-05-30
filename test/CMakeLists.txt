@@ -1,13 +1,16 @@
 project(unit_tests LANGUAGES CXX)
 
-add_custom_command(TARGET unit_tests POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_CURRENT_SOURCE_DIR}/file
-            ${CMAKE_CURRENT_BINARY_DIR}/file)
+file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/test_benchmark_data.hpp
+"#define TEST_DATA_DIRECTORY \"${CMAKE_CURRENT_SOURCE_DIR}\"")
 
 set(SOURCES_TEST_FILE src/000-simple_vector.cpp)
 
 add_executable(unit_tests ${SOURCES_TEST_FILE})
+
+# add_custom_command(TARGET unit_tests POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_directory
+#             ${CMAKE_CURRENT_SOURCE_DIR}/file
+#             ${CMAKE_CURRENT_BINARY_DIR}/file)
 
 target_link_libraries(unit_tests
     simple::matrix
