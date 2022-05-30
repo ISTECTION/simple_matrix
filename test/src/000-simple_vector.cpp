@@ -16,3 +16,27 @@ TEST_CASE("norm of the vector", "[norm]") {
     _vec2.clear();
     REQUIRE(_vec2.norm() == 0_a);
 }
+
+TEST_CASE("reading a vector from a file", "[read]") {
+    simple::vector<int> _vec1;
+    simple::read(_vec1, std::string { "file/read_back_inserter.txt" });
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(_vec1, Equals<int>({ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }));
+}
+
+TEST_CASE("the file does not exist", "[read]") {
+    simple::vector<int> _vec1;
+    REQUIRE_THROWS(simple::read(_vec1, std::string { "failed.txt" }));
+}
+
+TEST_CASE("reading a vector multiple numbers from a file", "[read]") {
+    simple::vector<int> _vec1;
+    simple::read(_vec1, std::string { "file/read_back_inserter.txt" }, 5);
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(_vec1, Equals<int>({ 1, 2, 3, 4, 5 }));
+}
+
+TEST_CASE("there are not so many numbers in the file", "[read]") {
+    simple::vector<int> _vec1;
+    REQUIRE_THROWS(simple::read(_vec1, std::string { "file/read_back_inserter.txt" }, 100));
+}
