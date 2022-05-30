@@ -41,3 +41,17 @@ TEST_CASE("there are not so many numbers in the file", "[read]") {
     simple::vector<int> _vec1;
     REQUIRE_THROWS(simple::read(_vec1, std::string { TEST_DATA_DIRECTORY "/file/read_back_inserter.txt" }, 100));
 }
+
+TEST_CASE("printing a vector to the console", "[operator<<] [pretty]") {
+    simple::vector<int> _vec1 = { 2, 5, 2, 3 , 5 };
+    std::ostringstream _ostream;
+    _ostream << _vec1;
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(
+        _ostream.str(), Equals(
+            "┌─               ─┐\n"
+            "│  2  5  2  3  5  │\n"
+            "└─               ─┘"
+        )
+    );
+}

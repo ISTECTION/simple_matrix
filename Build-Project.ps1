@@ -14,6 +14,6 @@ New-Item -Path $build_path -ItemType Directory
 if($compile -eq 'MinGW') {
     cmake -G 'MinGW Makefiles' -S . -B $build_path "-DSIMPLE_MATRIX_TEST=$test"
 } else {
-    cmake -S . -B $build_path
+    cmake -S . -B $build_path "-DSIMPLE_MATRIX_TEST=$test"
 }
 cmake --build $build_path
