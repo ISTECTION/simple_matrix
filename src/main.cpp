@@ -60,5 +60,15 @@ int main(int argc, const char *argv[]) {
     std::cout << "minor_det: " << m_det.minor_determinant(1, 0) << '\n';
     std::cout << "cofactor: " << m_det.cofactor(1, 0) << '\n';
 
+    simple::matrix<int> _mrx(3, 3);
+    _mrx.set_row(0, { 1, 1, 1 });
+    _mrx.set_row(1, { 1, 1, 1 });
+    _mrx.set_row(2, { 1, 1, 1 });
+
+    _mrx.set_row(1, { 0, 1, 1 });
+    _mrx.set_row(2, { 0, 0, 1 });
+
+    std::cout << std::boolalpha << _mrx.is_upper_triangulator() << '\n';
+
     return 0;
 }

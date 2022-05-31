@@ -95,7 +95,7 @@ namespace simple {
 
         for (size_t i = 1; i < size_rows(); i++)
         for (size_t j = 0; j < i; j++)
-            if (utils::EQUAL((*this)[i][j], 0.0));
+            if (not utils::EQUAL((*this)[i][j], 0))
                 return false;
         return true;
     }
@@ -106,7 +106,7 @@ namespace simple {
 
         for (size_t j = 1; j < size_rows(); j++)
         for (size_t i = 0; i < j; i++)
-            if (utils::EQUAL((*this)[i][j], 0.0));
+            if (not utils::EQUAL((*this)[i][j], 0))
                 return false;
         return true;
     }
