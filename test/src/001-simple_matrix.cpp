@@ -111,3 +111,21 @@ TEST_CASE("submatrix matrix", "[submatrix]") {
         { 5, 7 } };
     REQUIRE(_expected == _actual);
 }
+
+TEST_CASE("minor matrix", "[minor_matrix]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
+    REQUIRE_THROWS(_mrx.minor_matrix());
+    _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    simple::matrix<int> _actual = _mrx.minor_matrix();
+    simple::matrix<int> _expected = {
+        { -2, -4, -2 },
+        { -4, -8, -4 },
+        { -2, -4, -2 } };
+    REQUIRE(_expected == _actual);
+}
