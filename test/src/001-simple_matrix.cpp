@@ -89,8 +89,25 @@ TEST_CASE("inserting a collumn into a matrix", "[set_collumn]") {
 }
 
 TEST_CASE("transposed matrix", "[transpose]") {
-    simple::matrix<int> _mrx = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
     simple::matrix<int> _actual = _mrx.transpose();
-    simple::matrix<int> _expected = { { 1, 3, 5 }, { 2, 4, 6 } };
+    simple::matrix<int> _expected = {
+        { 1, 3, 5 },
+        { 2, 4, 6 } };
+    REQUIRE(_expected == _actual);
+}
+
+TEST_CASE("submatrix matrix", "[submatrix]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    simple::matrix<int> _actual = _mrx.submatrix(1, 1);
+    simple::matrix<int> _expected = {
+        { 1, 3 },
+        { 5, 7 } };
     REQUIRE(_expected == _actual);
 }
