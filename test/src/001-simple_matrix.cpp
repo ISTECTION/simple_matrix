@@ -69,3 +69,28 @@ TEST_CASE("take a collumn from the matrix", "[get_collumn]") {
 
     REQUIRE_THROWS(_mrx.get_collumn(5));
 }
+
+TEST_CASE("inserting a row into a matrix", "[set_row]") {
+    simple::matrix<int> _mrx(3, 3);
+    REQUIRE_THROWS(_mrx.set_row(3, { 0, 0, 0 }));
+
+    _mrx.set_row(0, { 1, 2, 3 });
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(_mrx.get_row(0), Equals<int>({ 1, 2, 3 }));
+}
+
+TEST_CASE("inserting a collumn into a matrix", "[set_collumn]") {
+    simple::matrix<int> _mrx(3, 2);
+    REQUIRE_THROWS(_mrx.set_collumn(2, { 0, 0, 0 }));
+
+    _mrx.set_collumn(0, { 5, 4, 3 });
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(_mrx.get_collumn(0), Equals<int>({ 5, 4, 3 }));
+}
+
+TEST_CASE("transposed matrix", "[transpose]") {
+    simple::matrix<int> _mrx = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+    simple::matrix<int> _actual = _mrx.transpose();
+    simple::matrix<int> _expected = { { 1, 3, 5 }, { 2, 4, 6 } };
+    REQUIRE(_expected == _actual);
+}
