@@ -160,3 +160,16 @@ TEST_CASE("minor determinant matrix", "[minor_determinant]") {
     REQUIRE(_expected == _actual);
 }
 
+TEST_CASE("cofactor", "[cofactor]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    int _actual = _mrx.cofactor(1, 1);
+    int _expected = pow(-1, 1 + 1) * (1 * 7 - 5 * 3);
+    REQUIRE(_expected == _actual);
+
+    _actual = _mrx.cofactor(2, 1);
+    _expected = pow(-1, 2 + 1) * (1 * 5 - 3 * 3);
+    REQUIRE(_expected == _actual);
+}

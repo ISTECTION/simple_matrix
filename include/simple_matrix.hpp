@@ -285,22 +285,25 @@ namespace simple {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
         }
-
-        T _det = 1;
         std::size_t N = size_rows();
-        _STL_vector _matrix_for_det(N, std::vector<T>(N));
+
+        using _STL_vector_d = ::std::vector<std::vector<double>>;
+        _STL_vector_d _matrix_for_det(N, std::vector<double>(N));
+
         for (size_t i = 0; i < N; i++)
         for (size_t j = 0; j < N; j++)
             _matrix_for_det[i][j] = (*this)[i][j];
 
-        for (int k = 0; k < N - 1; k++) {
-            for (int i = k + 1; i < N; i++) {
-                T _tmp = _matrix_for_det[i][k] / _matrix_for_det[k][k];
-                for (int j = 0; j < N; j++)
+        for (size_t k = 0; k < N - 1; k++) {
+            for (size_t i = k + 1; i < N; i++) {
+                double _tmp = _matrix_for_det[i][k] / _matrix_for_det[k][k];
+                for (size_t j = 0; j < N; j++)
                     _matrix_for_det[i][j] -= _matrix_for_det[k][j] * _tmp;
             }
         }
-        for (int i = 0; i < N; i++) _det *= _matrix_for_det[i][i];
+        T _det { 1 };
+        for (size_t i = 0; i < N; i++)
+            _det *= _matrix_for_det[i][i];
         return _det;
     }
 
