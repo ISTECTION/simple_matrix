@@ -102,8 +102,9 @@ namespace simple {
     bool matrix<T>::is_upper_triangulator () const noexcept {
         if (is_rectangular_matrix()) return false;
 
-        for (size_t i = 1; i < size_rows(); i++)
-        for (size_t j = 0; j < i; j++)
+        using std::views::iota;
+        for (size_t i : iota(0ull, this->size()))
+        for (size_t j : iota(0ull, i))
             if (not utils::EQUAL((*this)[i][j], 0))
                 return false;
         return true;
@@ -113,8 +114,9 @@ namespace simple {
     bool matrix<T>::is_lower_triangulator () const noexcept {
         if (is_rectangular_matrix()) return false;
 
-        for (size_t j = 1; j < size_rows(); j++)
-        for (size_t i = 0; i < j; i++)
+        using std::views::iota;
+        for (size_t j : iota(0ull, this->size()))
+        for (size_t i : iota(0ull, j))
             if (not utils::EQUAL((*this)[i][j], 0))
                 return false;
         return true;
@@ -122,15 +124,16 @@ namespace simple {
 
     template <_Matrix_Type T>
     bool matrix<T>::is_diagonal () const noexcept {
-        return is_square()
-            ? is_lower_triangulator() && is_upper_triangulator()
-            : false ;
+        return is_rectangular_matrix()
+            ? false
+            : is_lower_triangulator() &&
+              is_upper_triangulator() ;
     }
 
     template <_Matrix_Type T>
     bool matrix<T>::is_identity_matrix () const noexcept {
         if (is_rectangular_matrix()) return false;
-        for (size_t i = 0; i < this->size(); i++)
+        for (size_t i : std::views::iota(0ull, this->size()))
             if (not utils::EQUAL((*this)[i][i], 1))
                 return false;
         return true;
@@ -144,7 +147,7 @@ namespace simple {
     template <_Matrix_Type T>
     simple::vector<T> matrix<T>::get_collumn (std::size_t _col) const {
         if (_col >= size_collumns()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INDEX_COLLUMN_ERROR);
         }
         simple::vector<T> _col_v(this->size());

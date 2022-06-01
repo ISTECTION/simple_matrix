@@ -7,68 +7,72 @@
 
 int main(int argc, const char *argv[]) {
 
-    using namespace ::std::complex_literals;
+    // using namespace ::std::complex_literals;
 
-    using ::std::complex;
-    using ::std::double_t;
+    // using ::std::complex;
+    // using ::std::double_t;
 
-    simple::vector<double_t> a(3, 2);
-    std::cout << "norm vector (a) : " << a.norm() << '\n';
-    std::cout << a.pretty() << '\n';
+    // simple::vector<double_t> a(3, 2);
+    // std::cout << "norm vector (a) : " << a.norm() << '\n';
+    // std::cout << a.pretty() << '\n';
 
-    simple::read(a, std::string { "_testing_file/vector1.txt" });
-    std::cout << a << std::endl;
+    // simple::read(a, std::string { "_testing_file/vector1.txt" });
+    // std::cout << a << std::endl;
 
-    simple::read(a, std::string { "_testing_file/vector2.txt" }, 5);
-    std::cout << a << std::endl;
+    // simple::read(a, std::string { "_testing_file/vector2.txt" }, 5);
+    // std::cout << a << std::endl;
 
-    simple::write(a, std::string { "_testing_file/output_1.txt" });
+    // simple::write(a, std::string { "_testing_file/output_1.txt" });
 
-    simple::matrix<double> matrix_read;
-    read(matrix_read, std::string { "_testing_file/matrix.txt" });
-    std::cout << matrix_read << '\n';
-    std::cout << "matrix_read.size_rows(): " << matrix_read.size_rows() << '\n';
-    std::cout << "matrix_read.size_collumns(): " << matrix_read.size_collumns() << '\n';
+    // simple::matrix<double> matrix_read;
+    // read(matrix_read, std::string { "_testing_file/matrix.txt" });
+    // std::cout << matrix_read << '\n';
+    // std::cout << "matrix_read.size_rows(): " << matrix_read.size_rows() << '\n';
+    // std::cout << "matrix_read.size_collumns(): " << matrix_read.size_collumns() << '\n';
 
-    simple::write(matrix_read, std::string { "_testing_file/output_matrix.txt" });
+    // simple::write(matrix_read, std::string { "_testing_file/output_matrix.txt" });
 
-    read(matrix_read, std::string { "_testing_file/matrix.txt" }, 2, 3);
-    std::cout << matrix_read << '\n';
+    // read(matrix_read, std::string { "_testing_file/matrix.txt" }, 2, 3);
+    // std::cout << matrix_read << '\n';
 
-    simple::matrix<double> m(3, std::vector<double>(3));
-    m.set_row(1, { 1, 2, 3 });
-    std::cout << m.pretty() << '\n';
-    m.set_collumn(0, { 8, 7, 6 });
+    // simple::matrix<double> m(3, std::vector<double>(3));
+    // m.set_row(1, { 1, 2, 3 });
+    // std::cout << m.pretty() << '\n';
+    // m.set_collumn(0, { 8, 7, 6 });
 
-    std::cout << m.pretty() << '\n';
+    // std::cout << m.pretty() << '\n';
 
-    simple::matrix<double> m2(3, std::vector<double>(3));
-    m2.set_row(1, { 1, 2, 3 });
-    m2.set_collumn(0, { 8, 7, 6 });
+    // simple::matrix<double> m2(3, std::vector<double>(3));
+    // m2.set_row(1, { 1, 2, 3 });
+    // m2.set_collumn(0, { 8, 7, 6 });
 
-    m2 *= m;
-    std::cout << m2 << '\n';
-    std::cout << m2.transpose() << '\n';
-    std::cout << m2.submatrix(1, 1) << '\n';
+    // m2 *= m;
+    // std::cout << m2 << '\n';
+    // std::cout << m2.transpose() << '\n';
+    // std::cout << m2.submatrix(1, 1) << '\n';
 
 
-    simple::matrix<double> m_det(3, std::vector<double>(3));
-    m_det.set_row(0, { 1, 2, 3});
-    m_det.set_row(1, { 6, 5, 4});
-    m_det.set_row(2, { 1, 4, 5});
-    std::cout << "determinant: " << m_det.determinant() << '\n';
-    std::cout << "minor_det: " << m_det.minor_determinant(1, 0) << '\n';
-    std::cout << "cofactor: " << m_det.cofactor(1, 0) << '\n';
+    // simple::matrix<double> m_det(3, std::vector<double>(3));
+    // m_det.set_row(0, { 1, 2, 3});
+    // m_det.set_row(1, { 6, 5, 4});
+    // m_det.set_row(2, { 1, 4, 5});
+    // std::cout << "determinant: " << m_det.determinant() << '\n';
+    // std::cout << "minor_det: " << m_det.minor_determinant(1, 0) << '\n';
+    // std::cout << "cofactor: " << m_det.cofactor(1, 0) << '\n';
 
-    simple::matrix<int> _mrx(3, 3);
-    _mrx.set_row(0, { 1, 1, 1 });
-    _mrx.set_row(1, { 1, 1, 1 });
-    _mrx.set_row(2, { 1, 1, 1 });
+    // simple::matrix<int> _mrx(3, 3);
+    // _mrx.set_row(0, { 1, 1, 1 });
+    // _mrx.set_row(1, { 1, 1, 1 });
+    // _mrx.set_row(2, { 1, 1, 1 });
 
-    _mrx.set_row(1, { 0, 1, 1 });
-    _mrx.set_row(2, { 0, 0, 1 });
+    // _mrx.set_row(1, { 0, 1, 1 });
+    // _mrx.set_row(2, { 0, 0, 1 });
 
-    std::cout << std::boolalpha << _mrx.is_upper_triangulator() << '\n';
+    // std::cout << std::boolalpha << _mrx.is_upper_triangulator() << '\n';
+
+    for (size_t i : std::views::iota(0, 5))
+        std::cout << i << ' ';
+
 
     return 0;
 }

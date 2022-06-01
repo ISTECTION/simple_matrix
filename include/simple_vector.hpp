@@ -16,6 +16,7 @@
 #include <fstream>          /// std::ifstream
 #include <string>           /// std::string
 #include <vector>           /// std::vector
+#include <ranges>
 
 /// ----------------- C headers ----------------- ///
 #include <windows.h>        /// SetConsoleOutputCP()
