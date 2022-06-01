@@ -69,10 +69,5 @@ int main(int argc, const char *argv[]) {
     // _mrx.set_row(2, { 0, 0, 1 });
 
     // std::cout << std::boolalpha << _mrx.is_upper_triangulator() << '\n';
-
-    for (size_t i : std::views::iota(0, 5))
-        std::cout << i << ' ';
-
-
     return 0;
 }
