@@ -30,6 +30,8 @@ namespace simple {
 
         bool is_diagonal () const noexcept;
 
+        bool identity_matrix () const noexcept;
+
 
         simple::vector<T> get_row (std::size_t _row) const;
 
@@ -123,6 +125,15 @@ namespace simple {
         return is_square()
             ? is_lower_triangulator() && is_upper_triangulator()
             : false ;
+    }
+
+    template <_Matrix_Type T>
+    bool matrix<T>::identity_matrix () const noexcept {
+        if (is_rectangular_matrix()) return false;
+        for (size_t i = 0; i < this->size(); i++)
+            if (not utils::EQUAL((*this)[i][i], 1))
+                return false;
+        return true;
     }
 
     template <_Matrix_Type T>
