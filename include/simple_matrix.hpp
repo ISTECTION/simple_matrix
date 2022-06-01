@@ -55,13 +55,13 @@ namespace simple {
         matrix<T> invert () const;
 
 
-        T trace() const;
+        [[nodiscard]] constexpr T trace() const;
 
-        T minor_determinant (std::size_t i, std::size_t j) const;
+        [[nodiscard]] constexpr T minor_determinant (std::size_t i, std::size_t j) const;
 
-        T cofactor (std::size_t i, std::size_t j) const;
+        [[nodiscard]] constexpr T cofactor (std::size_t i, std::size_t j) const;
 
-        T determinant () const;
+        [[nodiscard]] constexpr T determinant () const;
 
 
         std::string pretty () const noexcept;
@@ -254,7 +254,7 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    T matrix<T>::trace () const {
+    constexpr T matrix<T>::trace () const {
         if (is_rectangular_matrix()) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
@@ -266,7 +266,7 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    T matrix<T>::minor_determinant (std::size_t i, std::size_t j) const {
+    constexpr T matrix<T>::minor_determinant (std::size_t i, std::size_t j) const {
         using enum ::exception::TYPE;
         if (is_rectangular_matrix()) throw exception(NOT_SQUARE);
         if (size_rows() < 2) throw exception(INCOMPATIBLE_SIZE_ERROR);
@@ -274,13 +274,13 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    T matrix<T>::cofactor (std::size_t i, std::size_t j) const {
+    constexpr T matrix<T>::cofactor (std::size_t i, std::size_t j) const {
         T _det = minor_determinant(i, j);
         return ((i + j) % 2 ? -1 : 1) * _det;
     }
 
     template <_Matrix_Type T>
-    T matrix<T>::determinant () const {
+    constexpr T matrix<T>::determinant () const {
         if (is_rectangular_matrix()) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
