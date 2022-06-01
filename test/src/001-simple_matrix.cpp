@@ -129,3 +129,34 @@ TEST_CASE("submatrix matrix", "[submatrix]") {
 //         { -2, -4, -2 } };
 //     REQUIRE(_expected == _actual);
 // }
+
+TEST_CASE("trace matrix", "[trace]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
+    REQUIRE_THROWS(_mrx.trace());
+    _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    REQUIRE(_mrx.trace() == 12);
+}
+
+TEST_CASE("minor determinant matrix", "[minor_determinant]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
+    REQUIRE_THROWS(_mrx.minor_determinant(0, 0));
+    _mrx = { { 1 } };
+    REQUIRE_THROWS(_mrx.minor_determinant(0, 0));
+    _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    int _actual = _mrx.minor_determinant(0, 0);
+    int _expected = 4 * 7 - 6 * 5;
+    REQUIRE(_expected == _actual);
+}
+
