@@ -22,6 +22,8 @@ namespace simple {
 
         bool is_square () const noexcept;
 
+        bool is_rectangular_matrix () const noexcept;
+
         bool is_upper_triangulator () const noexcept;
 
         bool is_lower_triangulator () const noexcept;
@@ -87,6 +89,11 @@ namespace simple {
     template <_Matrix_Type T>
     bool matrix<T>::is_square () const noexcept {
         return size_rows() == size_collumns();
+    }
+
+    template <_Matrix_Type T>
+    bool matrix<T>::is_rectangular_matrix () const noexcept {
+        return size_rows() != size_collumns();
     }
 
     template <_Matrix_Type T>
