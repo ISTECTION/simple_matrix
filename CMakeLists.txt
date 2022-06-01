@@ -33,9 +33,13 @@ if(SIMPLE_MATRIX_TEST)
     add_subdirectory(vendor/Catch2)
     add_subdirectory(test)
 endif()
+#---------------------------------- Модули -------------------------------------
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/module" ${CMAKE_MODULE_PATH})
+find_package(GitInfo)
+git_version_info(${SIMPLE_MATRIX_PROJECT_ID})
 # ---------------------------- Подведение итогов -------------------------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
 message(STATUS "  GitHub:     ${CMAKE_PROJECT_HOMEPAGE_URL}")
-message(STATUS "  Version:    1.0.0")
+message(STATUS "  Version:    ${SIMPLE_MATRIX_VERSION}")
 message(STATUS "  Compiler:   ${CMAKE_CXX_COMPILER}")
 # ------------------------------------------------------------------------------
