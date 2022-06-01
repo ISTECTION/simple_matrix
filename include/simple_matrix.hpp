@@ -151,7 +151,7 @@ namespace simple {
             throw exception(INDEX_COLLUMN_ERROR);
         }
         simple::vector<T> _col_v(this->size());
-        for (size_t i = 0; i < this->size(); i++)
+        for (size_t i : std::views::iota(0ull, this->size()))
             _col_v[i] = (*this)[i][_col];
         return _col_v;
     }
@@ -159,7 +159,7 @@ namespace simple {
     template <_Matrix_Type T>
     void matrix<T>::set_row (std::size_t _row, const simple::vector<T>& _row_v) {
         if (_row >= size_rows()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INDEX_ROW_ERROR);
         }
         (*this)[_row] = _row_v;
@@ -168,10 +168,10 @@ namespace simple {
     template <_Matrix_Type T>
     void matrix<T>::set_collumn (std::size_t _col, const simple::vector<T>& _col_v) {
         if (_col >= size_collumns()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INDEX_COLLUMN_ERROR);
         }
-        for (size_t i = 0; i < this->size(); i++)
+        for (size_t i : std::views::iota(0ull, this->size()))
             (*this)[i][_col] = _col_v[i];
     }
 
@@ -181,8 +181,9 @@ namespace simple {
         std::size_t _sc = size_collumns();
         matrix<T> _matrix(_sc, _sr);
 
-        for (size_t i = 0; i < _sr; i++)
-        for (size_t j = 0; j < _sc; j++)
+        using std::views::iota;
+        for (size_t i : iota(0ull, _sr))
+        for (size_t j : iota(0ull, _sc))
             _matrix[j][i] = (*this)[i][j];
         return _matrix;
     }
