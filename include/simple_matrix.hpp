@@ -301,7 +301,8 @@ namespace simple {
                     _matrix_for_det[i][j] -= _matrix_for_det[k][j] * _tmp;
             }
         }
-        T _det { 1 };
+
+        double _det { 1 };
         for (size_t i = 0; i < N; i++)
             _det *= _matrix_for_det[i][i];
         return _det;

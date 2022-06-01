@@ -112,23 +112,23 @@ TEST_CASE("submatrix matrix", "[submatrix]") {
     REQUIRE(_expected == _actual);
 }
 
-// TEST_CASE("minor matrix", "[minor_matrix]") {
-//     simple::matrix<int> _mrx = {
-//         { 1, 2 },
-//         { 3, 4 },
-//         { 5, 6 } };
-//     REQUIRE_THROWS(_mrx.minor_matrix());
-//     _mrx = {
-//         { 1, 2, 3 },
-//         { 3, 4, 5 },
-//         { 5, 6, 7 } };
-//     simple::matrix<int> _actual = _mrx.minor_matrix();
-//     simple::matrix<int> _expected = {
-//         { -2, -4, -2 },
-//         { -4, -8, -4 },
-//         { -2, -4, -2 } };
-//     REQUIRE(_expected == _actual);
-// }
+TEST_CASE("minor matrix", "[minor_matrix]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
+    REQUIRE_THROWS(_mrx.minor_matrix());
+    _mrx = {
+        { 1, 2, 3 },
+        { 3, 4, 5 },
+        { 5, 6, 7 } };
+    simple::matrix<int> _actual = _mrx.minor_matrix();
+    simple::matrix<int> _expected = {
+        { -2, -4, -2 },
+        { -4, -8, -4 },
+        { -2, -4, -2 } };
+    REQUIRE(_expected == _actual);
+}
 
 TEST_CASE("trace matrix", "[trace]") {
     simple::matrix<int> _mrx = {
@@ -171,5 +171,26 @@ TEST_CASE("cofactor", "[cofactor]") {
 
     _actual = _mrx.cofactor(2, 1);
     _expected = pow(-1, 2 + 1) * (1 * 5 - 3 * 3);
+    REQUIRE(_expected == _actual);
+}
+
+TEST_CASE("determinant", "[determinant]") {
+    simple::matrix<int> _mrx = {
+        { 1, 2 },
+        { 3, 4 },
+        { 5, 6 } };
+    REQUIRE_THROWS(_mrx.determinant());
+    _mrx = {
+        { 5, 4, 3 },
+        { 1, 2, 3 },
+        { 6, 4, 5 } };
+    int _actual = _mrx.determinant();
+    int _expected
+        = 5 * 2 * 5
+        + 1 * 4 * 3
+        + 4 * 3 * 6
+        - 6 * 2 * 3
+        - 4 * 3 * 5
+        - 1 * 4 * 5;
     REQUIRE(_expected == _actual);
 }
