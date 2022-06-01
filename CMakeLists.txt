@@ -17,6 +17,11 @@ target_include_directories(${PROJECT_NAME} INTERFACE
     $<INSTALL_INTERFACE:include>)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
+
+if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 19.12.25835)
+    set(CMAKE_CXX20_STANDARD_COMPILE_OPTION "-std:c++latest")
+    set(CMAKE_CXX20_EXTENSION_COMPILE_OPTION "-std:c++latest")
+endif()
 #-------------------------------------------------------------------------------
 set(SIMPLE_MATRIX_EXECUTABLE    "simple_run")
 
