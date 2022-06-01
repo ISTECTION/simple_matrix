@@ -19,17 +19,24 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
 
 if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 19.12.25835)
-    set(CMAKE_CXX20_STANDARD_COMPILE_OPTION "-std:c++latest")
+    set(CMAKE_CXX20_STANDARD_COMPILE_OPTION  "-std:c++latest")
     set(CMAKE_CXX20_EXTENSION_COMPILE_OPTION "-std:c++latest")
 endif()
 #-------------------------------------------------------------------------------
-set(SIMPLE_MATRIX_EXECUTABLE    "simple_run")
+set(SIMPLE_MATRIX_EXECUTABLE "simple_run")
 
 add_executable(${SIMPLE_MATRIX_EXECUTABLE} src/main.cpp)
 
 target_link_libraries(${SIMPLE_MATRIX_EXECUTABLE} PRIVATE ${PROJECT_NAME})
+#---------------------------------- Модули -------------------------------------
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/module" ${CMAKE_MODULE_PATH})
+
+find_package(GitInfo)
+
+git_version_info(${SIMPLE_MATRIX_PROJECT_ID})
 #---------------------------------- Опции --------------------------------------
 option(SIMPLE_MATRIX_TEST "Включить тестирование Catch2" OFF)
+option(SIMPLE_MATRIX_DOC  "Включить тестирование Catch2" OFF)
 #-------------------------------------------------------------------------------
 if(SIMPLE_MATRIX_TEST)
     enable_testing()
@@ -38,13 +45,60 @@ if(SIMPLE_MATRIX_TEST)
     add_subdirectory(vendor/Catch2)
     add_subdirectory(test)
 endif()
-#---------------------------------- Модули -------------------------------------
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/module" ${CMAKE_MODULE_PATH})
-find_package(GitInfo)
-git_version_info(${SIMPLE_MATRIX_PROJECT_ID})
+
+if(SIMPLE_MATRIX_DOC)
+    find_package(Doxygen REQUIRED)
+    if(DOXYGEN_FOUND)
+        set(SIMPLE_MATRIX_HEADERS
+            include/exception/exception.hpp
+            include/utils/lightweight.hpp
+            include/simple_vector.hpp
+            include/simple_matrix.hpp
+            include/common.hpp)
+
+        doxygen_add_docs(doxygen ${SIMPLE_MATRIX_HEADERS})
+        # set(DOXYGEN_INDEX_FILE ${CMAKE_CURRENT_SOURCE_DIR}/docs/html/index.html)
+        set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
+        set(DOXYGEN_PROJECT_BRIEF "operations with vectors and matrices")
+        set(DOXYGEN_GENERATE_LATEX NO)
+
+
+# ------------------------------------------------------------------------------
+        set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR}/include)
+        set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs/doxygen)
+        set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
+        set(DOXYFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.doxygen)
+
+        file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+        add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
+                   DEPENDS ${SIMPLE_MATRIX_HEADERS}
+                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
+                   MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
+                   COMMENT "Generating docs")
+
+        add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+# ------------------------------------------------------------------------------
+    else()
+        message(STATUS "Исполняемый файл doxygen не был найден")
+    endif()
+
+
+
+    # find_package(Doxygen)
+    # if(DOXYGEN_FOUND)
+    #     message(STATUS "Автодокументация включена (--target doc)")
+    #     message(STATUS "Язык генерации документации Doxygen: ${DOXYGEN_OUTPUT_LANGUAGE}")
+
+    #     add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+    # else()
+    #     message(STATUS "Doxygen не найден!")
+    # endif()
+endif()
 # ---------------------------- Подведение итогов -------------------------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
 message(STATUS "  GitHub:     ${CMAKE_PROJECT_HOMEPAGE_URL}")
 message(STATUS "  Version:    ${SIMPLE_MATRIX_VERSION}")
 message(STATUS "  Compiler:   ${CMAKE_CXX_COMPILER}")
+message(STATUS "============ Дополнительная информация ============")
+message(STATUS "  Doxygen:    ${DOXYGEN_VERSION}")
 # ------------------------------------------------------------------------------
