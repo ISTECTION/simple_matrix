@@ -30,7 +30,7 @@ namespace simple {
 
         bool is_diagonal () const noexcept;
 
-        bool identity_matrix () const noexcept;
+        bool is_identity_matrix () const noexcept;
 
 
         simple::vector<T> get_row (std::size_t _row) const;
@@ -100,7 +100,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     bool matrix<T>::is_upper_triangulator () const noexcept {
-        if ( !is_square() ) return false;
+        if (is_rectangular_matrix()) return false;
 
         for (size_t i = 1; i < size_rows(); i++)
         for (size_t j = 0; j < i; j++)
@@ -111,7 +111,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     bool matrix<T>::is_lower_triangulator () const noexcept {
-        if ( !is_square() ) return false;
+        if (is_rectangular_matrix()) return false;
 
         for (size_t j = 1; j < size_rows(); j++)
         for (size_t i = 0; i < j; i++)
@@ -128,7 +128,7 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    bool matrix<T>::identity_matrix () const noexcept {
+    bool matrix<T>::is_identity_matrix () const noexcept {
         if (is_rectangular_matrix()) return false;
         for (size_t i = 0; i < this->size(); i++)
             if (not utils::EQUAL((*this)[i][i], 1))
@@ -204,7 +204,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     matrix<T> matrix<T>::minor_matrix () const {
-        if ( !is_square() ) {
+        if (is_rectangular_matrix()) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
         }
@@ -238,7 +238,7 @@ namespace simple {
     template <_Matrix_Type T>
     matrix<T> matrix<T>::invert () const {
         using enum ::exception::TYPE;
-        if ( !is_square() )
+        if (is_rectangular_matrix())
             throw exception(NOT_SQUARE);
 
         T _det = determinant();
@@ -255,7 +255,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     T matrix<T>::trace () const {
-        if ( !is_square() ) {
+        if (is_rectangular_matrix()) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
         }
@@ -268,7 +268,7 @@ namespace simple {
     template <_Matrix_Type T>
     T matrix<T>::minor_determinant (std::size_t i, std::size_t j) const {
         using enum ::exception::TYPE;
-        if ( !is_square() )  throw exception(NOT_SQUARE);
+        if (is_rectangular_matrix()) throw exception(NOT_SQUARE);
         if (size_rows() < 2) throw exception(INCOMPATIBLE_SIZE_ERROR);
         return submatrix(i, j).determinant();
     }
@@ -281,7 +281,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     T matrix<T>::determinant () const {
-        if ( !is_square() ) {
+        if (is_rectangular_matrix()) {
             using enum ::exception::TYPE;
             throw exception(NOT_SQUARE);
         }
