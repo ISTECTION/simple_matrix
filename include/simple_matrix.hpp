@@ -195,7 +195,8 @@ namespace simple {
         matrix<T> _matrix(_sr - 1, _sc - 1);
 
         std::size_t _i = 0;
-        for (size_t _row = 0; _row < _sr; _row++) {
+        using std::views::iota;
+        for (size_t _row : iota(0ull, _sr)) {
             if (_row == i) continue;
             for (size_t _col = 0, _j = 0; _col < _sc; _col++) {
                 if (_col == j) continue;
@@ -209,14 +210,15 @@ namespace simple {
     template <_Matrix_Type T>
     matrix<T> matrix<T>::minor_matrix () const {
         if (is_rectangular_matrix()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(NOT_SQUARE);
         }
         std::size_t _sr = size_rows();
         std::size_t _sc = size_collumns();
         matrix<T> A(_sr, _sc);
-        for (size_t i = 0; i < _sr; ++i)
-        for (size_t j = 0; j < _sc; ++j)
+        using std::views::iota;
+        for (size_t i : iota(0ull, _sr))
+        for (size_t j : iota(0ull, _sc))
             A[i][j] = minor_determinant(i, j);
         return A;
     }
@@ -225,8 +227,8 @@ namespace simple {
     matrix<T> matrix<T>::cofactor_matrix () const {
         matrix<T> A = minor_matrix();
 
-        for (size_t i = 0; i < size_rows(); i++)
-        for (size_t j = i + 1; j < size_collumns(); j++)
+        for (size_t i : iota(0ull,  this->size()))
+        for (size_t j : iota(i + 1, size_collumns()))
             if ((i + j) % 2) {
                 A[i][j] = -A[i][j];
                 A[j][i] = -A[j][i];
@@ -241,7 +243,7 @@ namespace simple {
 
     template <_Matrix_Type T>
     matrix<T> matrix<T>::invert () const {
-        using enum ::exception::TYPE;
+        using enum exception::TYPE;
         if (is_rectangular_matrix())
             throw exception(NOT_SQUARE);
 
@@ -260,11 +262,11 @@ namespace simple {
     template <_Matrix_Type T>
     constexpr T matrix<T>::trace () const {
         if (is_rectangular_matrix()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(NOT_SQUARE);
         }
         T _trace = 0;
-        for (size_t i = 0; i < size_rows(); i++)
+        for (size_t i : std::views::iota(0ull, this->size()))
             _trace += (*this)[i][i];
         return _trace;
     }
@@ -286,47 +288,48 @@ namespace simple {
     template <_Matrix_Type T>
     constexpr T matrix<T>::determinant () const {
         if (is_rectangular_matrix()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(NOT_SQUARE);
         }
         std::size_t N = size_rows();
 
-        using _STL_vector_d = ::std::vector<std::vector<double>>;
+        using _STL_vector_d = std::vector<std::vector<double>>;
         _STL_vector_d _matrix_for_det(N, std::vector<double>(N));
 
-        for (size_t i = 0; i < N; i++)
-        for (size_t j = 0; j < N; j++)
+        using std::views::iota;
+        for (size_t i : iota(0ull, N))
+        for (size_t j : iota(0ull, N))
             _matrix_for_det[i][j] = (*this)[i][j];
 
-        for (size_t k = 0; k < N - 1; k++) {
-            for (size_t i = k + 1; i < N; i++) {
+        for (size_t k : iota(0ull, N - 1)) {
+            for (size_t i : iota(k + 1, N)) {
                 double _tmp = _matrix_for_det[i][k] / _matrix_for_det[k][k];
-                for (size_t j = 0; j < N; j++)
+                for (size_t j : iota(0ull, N))
                     _matrix_for_det[i][j] -= _matrix_for_det[k][j] * _tmp;
             }
         }
 
         double _det { 1 };
-        for (size_t i = 0; i < N; i++)
+        for (size_t i : iota(0ull, N))
             _det *= _matrix_for_det[i][i];
         return _det;
     }
 
     template <_Matrix_Type T>
     std::string matrix<T>::pretty () const noexcept {
-        std::size_t size_rows = this->size_rows();
-        std::size_t size_collumns = this->size_collumns();
+        std::size_t _sr = this->size_rows();
+        std::size_t _sc = this->size_collumns();
 
-        if (size_rows == 0 || size_collumns == 0) { return std::string { "empty" }; }
+        if (_sr == 0 || _sc == 0) { return std::string { "empty" }; }
 
         if constexpr (std::is_integral<T>::value or std::is_floating_point<T>::value) {
 
             std::ostringstream osstr, main;
             std::vector<std::string> strs;
             std::size_t mwidth = 0;
-
-            for (size_t i = 0; i < size_rows; ++i) {
-                for (size_t j = 0; j < size_collumns; ++j) {
+            using std::views::iota;
+            for (size_t i : iota(0ull, _sr)) {
+                for (size_t j : iota(0ull, _sc)) {
                     double term = (*this)[i][j];
                     osstr << (utils::EQUAL( term, 0.0 ) ? 0 : term);
                     std::string str = osstr.str();
@@ -337,12 +340,12 @@ namespace simple {
                 }
             }
 
-            std::size_t midwidth = (mwidth * size_collumns) + ((size_collumns + 1) << 1);
+            std::size_t midwidth = (mwidth * _sc) + ((_sc + 1) << 1);
             main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
-            for (size_t i = 0; i < size_rows; i++) {
+            for (size_t i : iota(0ull, _sr)) {
                 main << '\n' << "│";
-                for (size_t j = 0; j < size_collumns; j++) {
-                    std::string str = strs[i * size_collumns + j];
+                for (size_t j : iota(0ull, _sc)) {
+                    std::string str = strs[i * _sc + j];
                     int wlen = (str.size() + mwidth + 1) >> 1;
                     main << "  " << std::setw(wlen) << str
                         << std::setw(mwidth - wlen) << "";
@@ -366,12 +369,11 @@ namespace simple {
         std::size_t _sc = size_collumns();
 
         if (_sr != A.size_rows() || _sc != A.size_collumns()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INCOMPATIBLE_SIZE_ERROR);
         }
-
-        for (size_t i = 0; i < _sr; i++)
-        for (size_t j = 0; j < _sc; j++)
+        for (size_t i : std::views::iota(0ull, _sr))
+        for (size_t j : std::views::iota(0ull, _sc))
             (*this)[i][j] += A[i][j];
         return *this;
     }
@@ -382,12 +384,11 @@ namespace simple {
         std::size_t _sc = size_collumns();
 
         if (_sr != A.size_rows() || _sc != A.size_collumns()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INCOMPATIBLE_SIZE_ERROR);
         }
-
-        for (size_t i = 0; i < _sr; i++)
-        for (size_t j = 0; j < _sc; j++)
+        for (size_t i : std::views::iota(0ull, _sr))
+        for (size_t j : std::views::iota(0ull, _sc))
             (*this)[i][j] -= A[i][j];
         return *this;
     }
@@ -395,18 +396,17 @@ namespace simple {
     template <_Matrix_Type T>
     matrix<T>& matrix<T>::operator*= (const matrix<T>& B) {
         if (size_collumns() != B.size_rows()) {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(INCOMPATIBLE_SIZE_ERROR);
         }
         std::size_t _Asr = size_rows();
         std::size_t _Bsc = B.size_collumns();
-
-        for (size_t i = 0; i < _Asr; i++) {
-
+        using std::views::iota;
+        for (size_t i : iota(0ull, _Asr)) {
             simple::vector<T> _row(_Bsc);
-            for (size_t j = 0; j < _Bsc; j++) {
+            for (size_t j : iota(0ull, _Bsc)) {
                 T _sum = 0;
-                for (size_t k = 0; k < size_collumns(); k++)
+                for (size_t k : iota(0ull, size_collumns()))
                     _sum += (*this)[i][k] * B[k][j];
                 _row[j] = _sum;
             }
@@ -418,8 +418,9 @@ namespace simple {
     template <_Matrix_Type T>
     matrix<T>& matrix<T>::operator*= (double _koef) {
         std::size_t _sizecollumn = size_collumns();
-        for (size_t i = 0; i < this->size(); i++)
-        for (size_t j = 0; j < _sizecollumn; j++)
+        using std::views::iota;
+        for (size_t i : iota(0ull, this->size()))
+        for (size_t j : iota(0ull, _sizecollumn))
             (*this)[i][j] *= _koef;
         return *this;
     }
@@ -427,8 +428,9 @@ namespace simple {
     template <_Matrix_Type T>
     matrix<T>& matrix<T>::operator/= (double _koef) {
         std::size_t _sizecollumn = size_collumns();
-        for (size_t i = 0; i < this->size(); i++)
-        for (size_t j = 0; j < _sizecollumn; j++)
+        using std::views::iota;
+        for (size_t i : iota(0ull, this->size()))
+        for (size_t j : iota(0ull, _sizecollumn))
             (*this)[i][j] /= _koef;
         return *this;
     }
@@ -504,7 +506,7 @@ namespace simple {
             }
             i_file.close();
         } else {
-            using enum ::exception::TYPE;
+            using enum exception::TYPE;
             throw exception(FILE_OPENING_ERROR);
         }
     }

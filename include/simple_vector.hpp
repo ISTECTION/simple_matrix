@@ -57,7 +57,7 @@ namespace simple {
             size_t mwidth = 0;
             std::size_t _count = this->size();
 
-            for (size_t i = 0; i < _count; ++i) {
+            for (size_t i : std::views::iota(0ull, _count)) {
                 double term = (*this)[i];
                 osstr << (utils::EQUAL( term, 0.0 ) ? 0 : term);
                 std::string str = osstr.str();
@@ -69,7 +69,7 @@ namespace simple {
             size_t midwidth = (mwidth * _count) + ((_count + 1) << 1);
             main << "┌─" << std::setw(midwidth - 2) << "" << "─┐";
             main << '\n' << "│";
-            for (size_t i = 0; i < _count; i++) {
+            for (size_t i : std::views::iota(0ull, _count)) {
                 std::string str = strs[i];
                 int wlen = (str.size() + mwidth + 1) >> 1;
                 main << "  " << std::setw(wlen) << str

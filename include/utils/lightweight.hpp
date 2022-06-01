@@ -1,6 +1,6 @@
 #ifndef _LIGHTWEIGHT_HPP
 #define _LIGHTWEIGHT_HPP
-#include <cmath>            /// abs
+#include <cmath>            /// abs sqrt
 
 namespace utils {
     constexpr auto EQUAL = []<typename T>(T a, T b) -> bool { return (abs(a - b) < 1E-8); };
