@@ -50,49 +50,25 @@ if(SIMPLE_MATRIX_DOC)
     find_package(Doxygen REQUIRED)
     if(DOXYGEN_FOUND)
         set(SIMPLE_MATRIX_HEADERS
-            include/exception/exception.hpp
-            include/utils/lightweight.hpp
-            include/simple_vector.hpp
-            include/simple_matrix.hpp
-            include/common.hpp)
+            ${CMAKE_CURRENT_SOURCE_DIR}/include/exception/exception.hpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/include/utils/lightweight.hpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/include/simple_vector.hpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/include/simple_matrix.hpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/include/common.hpp)
 
-        doxygen_add_docs(doxygen ${SIMPLE_MATRIX_HEADERS})
-        # set(DOXYGEN_INDEX_FILE ${CMAKE_CURRENT_SOURCE_DIR}/docs/html/index.html)
         set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
         set(DOXYGEN_PROJECT_BRIEF "operations with vectors and matrices")
-        set(DOXYGEN_GENERATE_LATEX NO)
+        set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs)
 
-
-# ------------------------------------------------------------------------------
-        set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR}/include)
-        set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs/doxygen)
-        set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
-        set(DOXYFILE_IN ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.doxygen)
-
-        file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
-        add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
-                   DEPENDS ${SIMPLE_MATRIX_HEADERS}
-                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-                   MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
-                   COMMENT "Generating docs")
-
-        add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
-# ------------------------------------------------------------------------------
+        doxygen_add_docs(doxygen ${SIMPLE_MATRIX_HEADERS})
+        add_custom_command(
+            OUTPUT  ${CMAKE_CURRENT_BINARY_DIR}/docs
+            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.doxygen
+            COMMENT "Documentation generation")
+        add_custom_target(docs ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/docs)
     else()
         message(STATUS "Исполняемый файл doxygen не был найден")
     endif()
-
-
-
-    # find_package(Doxygen)
-    # if(DOXYGEN_FOUND)
-    #     message(STATUS "Автодокументация включена (--target doc)")
-    #     message(STATUS "Язык генерации документации Doxygen: ${DOXYGEN_OUTPUT_LANGUAGE}")
-
-    #     add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
-    # else()
-    #     message(STATUS "Doxygen не найден!")
-    # endif()
 endif()
 # ---------------------------- Подведение итогов -------------------------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
