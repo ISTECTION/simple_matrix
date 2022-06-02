@@ -8,20 +8,25 @@
 #include <algorithm>
 #include <iterator>
 
-#include <unordered_map>    /// std::unordered_map
-#include <iostream>         /// std::cout
-#include <numeric>          /// std::inner_product
-#include <sstream>          /// std::ostringstream
-#include <iomanip>          /// std::setw
-#include <fstream>          /// std::ifstream
-#include <string>           /// std::string
-#include <vector>           /// std::vector
+#include <unordered_map>    ///< std::unordered_map
+#include <iostream>         ///< std::cout
+#include <numeric>          ///< std::inner_product
+#include <sstream>          ///< std::ostringstream
+#include <iomanip>          ///< std::setw
+#include <fstream>          ///< std::ifstream
+#include <string>           ///< std::string
+#include <vector>           ///< std::vector
 #include <ranges>
 
-/// ----------------- C headers ----------------- ///
-#include <windows.h>        /// SetConsoleOutputCP()
-/// ----------------- C headers ----------------- ///
+#include <windows.h>
 
+/** @enum  SEPARATOR
+  * @brief Перечисление с выбором разделителя при записи файла
+  * @var   SEPARATOR::WHITESPACE
+  * Все элементы вектора будут напечатаны через пробел
+  * @var   SEPARATOR::NEW_LINE
+  * Каждый элемент вектора будет напечатан с новой строки
+  */
 enum class SEPARATOR { WHITESPACE, NEW_LINE };
 
 namespace simple {
