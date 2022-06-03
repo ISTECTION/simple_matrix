@@ -8,14 +8,14 @@
 #include <algorithm>
 #include <iterator>
 
-#include <unordered_map>    ///< std::unordered_map
-#include <iostream>         ///< std::cout
-#include <numeric>          ///< std::inner_product
-#include <sstream>          ///< std::ostringstream
-#include <iomanip>          ///< std::setw
-#include <fstream>          ///< std::ifstream
-#include <string>           ///< std::string
-#include <vector>           ///< std::vector
+#include <unordered_map>    /// std::unordered_map
+#include <iostream>         /// std::cout
+#include <numeric>          /// std::inner_product
+#include <sstream>          /// std::ostringstream
+#include <iomanip>          /// std::setw
+#include <fstream>          /// std::ifstream
+#include <string>           /// std::string
+#include <vector>           /// std::vector
 #include <ranges>
 
 #include <windows.h>
@@ -47,9 +47,18 @@ namespace simple {
         constexpr vector (const std::vector<T>& _v) noexcept
             : std::vector<T>::vector(_v) { }
 
+        /** @fn constexpr auto norm () const noexcept
+          * @brief Вычисляет норму вектора
+          * @return Норму вектора
+          */
         [[nodiscard]] constexpr auto norm () const noexcept;
 
+        /** @addtogroup pretty
+          * Функции генерации красивых матриц и векторов
+          * @{
+          */
         std::string pretty () const noexcept;
+        /** @} */
     };
 
     template <_Vec_Type T>
@@ -60,10 +69,6 @@ namespace simple {
         );
     }
 
-
-    /// @addtogroup pretty
-    /// Функции генерации красивых матриц и векторов
-    /// @{
     template <_Vec_Type T>
     std::string vector<T>::pretty () const noexcept {
         if (this->size() == 0) { return std::string { "empty" }; }
@@ -102,7 +107,6 @@ namespace simple {
             std::string { "I can't process this type" };
         }
     }
-    /// @}
 
     template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path) {
