@@ -29,6 +29,8 @@
   */
 enum class SEPARATOR { WHITESPACE, NEW_LINE };
 
+
+///< Generic record interfaces and implementations
 namespace simple {
 
     template <_Vec_Type T>
@@ -53,6 +55,10 @@ namespace simple {
         );
     }
 
+
+    /// @addtogroup pretty
+    /// Функции генерации красивых матриц и векторов
+    /// @{
     template <_Vec_Type T>
     std::string vector<T>::pretty () const noexcept {
         if (this->size() == 0) { return std::string { "empty" }; }
@@ -91,6 +97,7 @@ namespace simple {
             std::string { "I can't process this type" };
         }
     }
+    /// @}
 
     template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path) {
@@ -151,5 +158,6 @@ namespace simple {
     template <_Vec_Type T>
     std::ostream& operator<< (std::ostream& out, const vector<T>& _vec) { return out << _vec.pretty(); }
 }
+
 
 #endif /// _SIMPLE_VECTOR_HPP

@@ -64,7 +64,10 @@ namespace simple {
         [[nodiscard]] constexpr T determinant () const;
 
 
+        /// @addtogroup pretty
+        /// @{
         std::string pretty () const noexcept;
+        /// @}
 
 
         matrix<T>& operator+= (const matrix<T>& A);
