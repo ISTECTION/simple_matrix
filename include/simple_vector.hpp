@@ -29,10 +29,15 @@
   */
 enum class SEPARATOR { WHITESPACE, NEW_LINE };
 
-
-///< Generic record interfaces and implementations
 namespace simple {
 
+    /** @class simple::vector
+      * @brief Простой векторный класс
+      * @details В данном классе реализованы функции
+      * вычисления нормы вектора и демонстрации его
+      * в виде красиво отформатированной строки
+      * @tparam T Любые целочисленные и вещественные типы
+      */
     template <_Vec_Type T>
     class vector final : public std::vector<T>
     {
@@ -158,6 +163,5 @@ namespace simple {
     template <_Vec_Type T>
     std::ostream& operator<< (std::ostream& out, const vector<T>& _vec) { return out << _vec.pretty(); }
 }
-
 
 #endif /// _SIMPLE_VECTOR_HPP
