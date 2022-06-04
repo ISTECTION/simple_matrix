@@ -49,56 +49,21 @@ endif()
 if(SIMPLE_MATRIX_DOC)
     find_package(Doxygen REQUIRED)
     if(DOXYGEN_FOUND)
-        set(SIMPLE_MATRIX_HEADERS
-            ${CMAKE_CURRENT_SOURCE_DIR}/include/exception/exception.hpp
-            ${CMAKE_CURRENT_SOURCE_DIR}/include/utils/lightweight.hpp
-            ${CMAKE_CURRENT_SOURCE_DIR}/include/simple_vector.hpp
-            ${CMAKE_CURRENT_SOURCE_DIR}/include/simple_matrix.hpp
-            ${CMAKE_CURRENT_SOURCE_DIR}/include/common.hpp
-            ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
-
+        set(DOXYGEN_PROJECT_NAME   ${PROJECT_NAME})
         set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
         set(DOXYGEN_PROJECT_BRIEF "operations with vectors and matrices")
-        set(DOXYGEN_PROJECT_LOGO "${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-custom/matrix.svg")
-        set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs)
-        set(DOXYGEN_CREATE_SUBDIRS YES)
-        set(DOXYGEN_OUTPUT_LANGUAGE Russian)
-        set(DOXYGEN_INLINE_INHERITED_MEMB YES)
-        set(DOXYGEN_STRIP_FROM_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-        set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
-        set(DOXYGEN_USE_MDFILE_AS_MAINPAGE README.md)
-        set(DOXYGEN_GENERATE_TREEVIEW YES)
-        set(DOXYGEN_HAVE_DOT YES)
-        set(DOXYGEN_DOT_IMAGE_FORMAT svg)
-        set(DOXYGEN_DOT_TRANSPARENT YES)
-        set(DOXYGEN_EXTRACT_ALL YES)
-        set(DOXYGEN_RECURSIVE NO)
-        set(DOXYGEN_ENABLE_PREPROCESSING NO)
 
-        set(DOXYGEN_HTML_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-custom/header.html)
-        set(DOXYGEN_HTML_EXTRA_STYLESHEET
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome.css
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-custom/custom.css
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome-sidebar-only.css
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome-sidebar-only-darkmode-toggle.css
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-custom/custom-alternative.css)
-        set(DOXYGEN_HTML_EXTRA_FILES
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome-darkmode-toggle.js
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome-fragment-copy-button.js
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-awesome-paragraph-link.js
-            ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen-custom/toggle-alternative-theme.js)
+        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.doxygen.in Doxyfile.doxygen @ONLY)
+        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/docs/styles DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-        set(DOXYGEN_HTML_COLORSTYLE_HUE 209)
-        set(DOXYGEN_HTML_COLORSTYLE_SAT 255)
-        set(DOXYGEN_HTML_COLORSTYLE_GAMMA 113)
-
-
-        doxygen_add_docs(doxygen ${SIMPLE_MATRIX_HEADERS})
         add_custom_command(
             OUTPUT  ${CMAKE_CURRENT_BINARY_DIR}/docs
             COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.doxygen
             COMMENT "Documentation generation")
         add_custom_target(docs ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/docs)
+
+        file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/docs/Documentation.html
+            "<meta http-equiv=\"refresh\" content=\"0; url=${CMAKE_CURRENT_BINARY_DIR}/docs/html/index.html\">")
     else()
         message(STATUS "Исполняемый файл doxygen не был найден")
     endif()
