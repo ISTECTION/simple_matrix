@@ -48,13 +48,16 @@ namespace simple {
             : std::vector<T>::vector(_v) { }
 
         /** @fn constexpr auto norm () const noexcept
-          * @brief Вычисляет норму вектора
+          * @brief  Вычисляет норму вектора
           * @return Норму вектора
           */
         [[nodiscard]] constexpr auto norm () const noexcept;
 
-        /** @addtogroup pretty
-          * Функции генерации красивых матриц и векторов
+        /** @fn std::string pretty () const noexcept
+          * @return Строку содержащую распечтанный вектор
+
+          * @addtogroup pretty
+          * @brief Функции генерации красивых матриц и векторов
           * @{
           */
         std::string pretty () const noexcept;
@@ -108,7 +111,7 @@ namespace simple {
         }
     }
 
-    /** @fn void read (vector<U>& _vec, T _path)
+    /** @fn void read (vector<U>&, T)
       * @brief  Чтение вектора из файла неизвестного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
@@ -133,7 +136,7 @@ namespace simple {
         }
     }
 
-    /** @fn void read (vector<U>& _vec, T _path, std::size_t _count)
+    /** @fn void read (vector<U>&, T, std::size_t)
       * @brief  Чтение вектора из файла известного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
@@ -163,7 +166,7 @@ namespace simple {
         }
     }
 
-    /** @fn void write (const vector<U>& _vec, T _path, SEPARATOR _sep = SEPARATOR::WHITESPACE)
+    /** @fn void write (const vector<U>&, T, SEPARATOR)
       * @brief  Запись вектора в файл
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
@@ -191,8 +194,13 @@ namespace simple {
         }
     }
 
+    /** @fn std::ostream& operator<< (std::ostream&, const vector<T>&)
+      * @brief  Вывод вектора в поток
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param _out Поток для записи вектора
+      * @param _vec Сам вектор
+      */
     template <_Vec_Type T>
-    std::ostream& operator<< (std::ostream& out, const vector<T>& _vec) { return out << _vec.pretty(); }
+    std::ostream& operator<< (std::ostream& _out, const vector<T>& _vec) { return _out << _vec.pretty(); }
 }
-
 #endif /// _SIMPLE_VECTOR_HPP
