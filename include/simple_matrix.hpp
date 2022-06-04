@@ -34,43 +34,43 @@ namespace simple {
 
         /** @fn bool is_square () const noexcept
           * @return
-          *     - true  : Матрица является квадратной
-          *     - false : Матрица не является квадратной
+          *     - true  : Если матрица является квадратной
+          *     - false : Если матрица не является квадратной
           */
         bool is_square () const noexcept;
 
         /** @fn bool is_rectangular_matrix () const noexcept
           * @return
-          *     - true  : Матрица является прямоугольной
-          *     - false : Матрица не является прямоугольной
+          *     - true  : Если матрица является прямоугольной
+          *     - false : Если матрица не является прямоугольной
           */
         bool is_rectangular_matrix () const noexcept;
 
         /** @fn bool is_upper_triangulator () const noexcept
           * @return
-          *     - true  : Матрица является верхнетреугольной
-          *     - false : Матрица не является верхнетреугольной
+          *     - true  : Если матрица является верхнетреугольной
+          *     - false : Если матрица не является верхнетреугольной
           */
         bool is_upper_triangulator () const noexcept;
 
         /** @fn bool is_lower_triangulator () const noexcept
           * @return
-          *     - true  : Матрица является нижнетреугольной
-          *     - false : Матрица не является нижнетреугольной
+          *     - true  : Если матрица является нижнетреугольной
+          *     - false : Если матрица не является нижнетреугольной
           */
         bool is_lower_triangulator () const noexcept;
 
         /** @fn bool is_diagonal () const noexcept
           * @return
-          *     - true  : Матрица является диагональной
-          *     - false : Матрица не является диагональной
+          *     - true  : Если матрица является диагональной
+          *     - false : Если матрица не является диагональной
           */
         bool is_diagonal () const noexcept;
 
         /** @fn bool is_identity_matrix () const noexcept
           * @return
-          *     - true  : Матрица является единичной
-          *     - false : Матрица не является единичной
+          *     - true  : Если матрица является единичной
+          *     - false : Если матрица не является единичной
           */
         bool is_identity_matrix () const noexcept;
 
