@@ -108,6 +108,14 @@ namespace simple {
         }
     }
 
+    /** @fn void read (vector<U>& _vec, T _path)
+      * @brief  Чтение вектора из файла неизвестного размера
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param[out] _vec  Вектор в который будут записаны данные
+      * @param[in]  _path Путь до файла
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path) {
 
@@ -125,6 +133,16 @@ namespace simple {
         }
     }
 
+    /** @fn void read (vector<U>& _vec, T _path, std::size_t _count)
+      * @brief  Чтение вектора из файла известного размера
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param[out] _vec   Вектор в который будут записаны данные
+      * @param[in]  _path  Путь до файла
+      * @param[in]  _count Количество елементов
+      * @exception exception::TYPE::LITTLE_DATA_ERROR  В случае невозможности считать данное количестов элементов из файла
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Vec_Type U>
     void read (vector<U>& _vec, T _path, std::size_t _count) {
 
@@ -145,6 +163,15 @@ namespace simple {
         }
     }
 
+    /** @fn void write (const vector<U>& _vec, T _path, SEPARATOR _sep = SEPARATOR::WHITESPACE)
+      * @brief  Запись вектора в файл
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param _vec  Сохраняемый в файл вектор
+      * @param _path Путь к файлу
+      * @param _sep  Разделитель между елементами в выходном файле
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Vec_Type U>
     void write (const vector<U>& _vec, T _path, SEPARATOR _sep = SEPARATOR::WHITESPACE) {
         std::unordered_map<SEPARATOR, std::string> _separator_map_write_file = {
