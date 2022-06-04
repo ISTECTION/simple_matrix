@@ -5,6 +5,13 @@
 
 namespace simple {
 
+
+    /** @class simple::matrix
+      * @brief Простой матричный класс
+      * @details В данном классе реализованы все возможные функции
+      * взаимодействия с матрицами
+      * @tparam T Любые целочисленные и вещественные типы
+      */
     template <_Matrix_Type T>
     class matrix final : public std::vector<std::vector<T>>
     {
@@ -15,21 +22,56 @@ namespace simple {
         constexpr matrix(std::size_t _sr, std::size_t _sc) noexcept
             : _STL_vector::vector(_sr, std::vector<T>(_sc)) { }
 
+        /** @fn std::size_t size_rows () const noexcept
+          * @return Количество строк матрицы
+          */
         std::size_t size_rows () const noexcept;
 
+        /** @fn std::size_t size_collumns () const noexcept
+          * @return Количество столбцов матрицы
+          */
         std::size_t size_collumns () const noexcept;
 
-
+        /** @fn bool is_square () const noexcept
+          * @return
+          *     - true  : Матрица является квадратной
+          *     - false : Матрица не является квадратной
+          */
         bool is_square () const noexcept;
 
+        /** @fn bool is_rectangular_matrix () const noexcept
+          * @return
+          *     - true  : Матрица является прямоугольной
+          *     - false : Матрица не является прямоугольной
+          */
         bool is_rectangular_matrix () const noexcept;
 
+        /** @fn bool is_upper_triangulator () const noexcept
+          * @return
+          *     - true  : Матрица является верхнетреугольной
+          *     - false : Матрица не является верхнетреугольной
+          */
         bool is_upper_triangulator () const noexcept;
 
+        /** @fn bool is_lower_triangulator () const noexcept
+          * @return
+          *     - true  : Матрица является нижнетреугольной
+          *     - false : Матрица не является нижнетреугольной
+          */
         bool is_lower_triangulator () const noexcept;
 
+        /** @fn bool is_diagonal () const noexcept
+          * @return
+          *     - true  : Матрица является диагональной
+          *     - false : Матрица не является диагональной
+          */
         bool is_diagonal () const noexcept;
 
+        /** @fn bool is_identity_matrix () const noexcept
+          * @return
+          *     - true  : Матрица является единичной
+          *     - false : Матрица не является единичной
+          */
         bool is_identity_matrix () const noexcept;
 
 
@@ -64,10 +106,14 @@ namespace simple {
         [[nodiscard]] constexpr T determinant () const;
 
 
-        /// @addtogroup pretty
-        /// @{
+        /** @fn std::string pretty () const noexcept
+          * @return Строку содержащую распечтанный вектор
+
+          * @addtogroup pretty
+          * @{
+          */
         std::string pretty () const noexcept;
-        /// @}
+        /** @} */
 
 
         matrix<T>& operator+= (const matrix<T>& A);
