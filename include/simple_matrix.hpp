@@ -5,11 +5,10 @@
 
 namespace simple {
 
-
     /** @class simple::matrix
       * @brief Простой матричный класс
-      * @details В данном классе реализованы все возможные функции
-      * взаимодействия с матрицами
+      * @details В данном классе реализованы все
+      * возможные функции взаимодействия с матрицами
       * @tparam T Любые целочисленные и вещественные типы
       */
     template <_Matrix_Type T>
@@ -75,12 +74,32 @@ namespace simple {
         bool is_identity_matrix () const noexcept;
 
 
+        /** @fn simple::vector<T> get_row (std::size_t _row) const
+          * @brief Получить строку матрицы
+          * @param _row Номер строки
+          * @return Вектор
+          */
         simple::vector<T> get_row (std::size_t _row) const;
 
+        /** @fn simple::vector<T> get_collumn (std::size_t _col) const
+          * @brief Получить столбец матрицы
+          * @param _col Номер столбца
+          * @return Вектор
+          */
         simple::vector<T> get_collumn (std::size_t _col) const;
 
+        /** @fn void set_row (std::size_t _row, const simple::vector<T>& _row_v)
+          * @brief Установить строку в матрицу
+          * @param _row   Номер строки
+          * @param _row_v Вектор
+          */
         void set_row (std::size_t _row, const simple::vector<T>& _row_v);
 
+        /** @fn void set_collumn (std::size_t _col, const simple::vector<T>& _col_v)
+          * @brief Установить столбец в матрицу
+          * @param _col   Номер столбца
+          * @param _col_v Вектор
+          */
         void set_collumn (std::size_t _col, const simple::vector<T>& _col_v);
 
 
