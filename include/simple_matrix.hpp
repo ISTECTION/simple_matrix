@@ -74,28 +74,28 @@ namespace simple {
         bool is_identity_matrix () const noexcept;
 
 
-        /** @fn simple::vector<T> get_row (std::size_t _row) const
+        /** @fn simple::vector<T> get_row (std::size_t) const
           * @brief Получить строку матрицы
           * @param _row Номер строки
           * @return Вектор
           */
         simple::vector<T> get_row (std::size_t _row) const;
 
-        /** @fn simple::vector<T> get_collumn (std::size_t _col) const
+        /** @fn simple::vector<T> get_collumn (std::size_t) const
           * @brief Получить столбец матрицы
           * @param _col Номер столбца
           * @return Вектор
           */
         simple::vector<T> get_collumn (std::size_t _col) const;
 
-        /** @fn void set_row (std::size_t _row, const simple::vector<T>& _row_v)
+        /** @fn void set_row (std::size_t, const simple::vector<T>&)
           * @brief Установить строку в матрицу
           * @param _row   Номер строки
           * @param _row_v Вектор
           */
         void set_row (std::size_t _row, const simple::vector<T>& _row_v);
 
-        /** @fn void set_collumn (std::size_t _col, const simple::vector<T>& _col_v)
+        /** @fn void set_collumn (std::size_t, const simple::vector<T>&)
           * @brief Установить столбец в матрицу
           * @param _col   Номер столбца
           * @param _col_v Вектор
@@ -108,7 +108,7 @@ namespace simple {
           */
         matrix<T> transpose () const;
 
-        /** @fn matrix<T> submatrix (std::size_t i, std::size_t j) const
+        /** @fn matrix<T> submatrix (std::size_t, std::size_t) const
           * @brief Получить подматрицу
           * @param i Номер строки
           * @param j Номер столбца
@@ -555,6 +555,11 @@ namespace simple {
         return _Tmp;
     }
 
+    /** @fn matrix<T> identity_matrix (std::size_t)
+      * @brief Возвращает единичную матрицу
+      * @param _Count Размерность матрицы
+      * @return Единичную матрицу
+      */
     template <_Matrix_Type T>
     matrix<T> identity_matrix (std::size_t _Count) {
         matrix<T> A(_Count, std::vector<T>(_Count));
@@ -563,7 +568,7 @@ namespace simple {
         return A;
     }
 
-    /** @fn void read (matrix<U>& _matrix, T _path)
+    /** @fn void read (matrix<U>&, T)
       * @brief  Чтение матрицы из файла неизвестного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
@@ -596,7 +601,7 @@ namespace simple {
         }
     }
 
-    /** @fn void read (matrix<U>& _matrix, T _path, std::size_t _row_count, std::size_t _col_count)
+    /** @fn void read (matrix<U>&, T, std::size_t, std::size_t)
       * @brief  Чтение матрицы из файла известного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
@@ -625,7 +630,7 @@ namespace simple {
         }
     }
 
-    /** @fn void write (const matrix<U>& _matrix, T _path)
+    /** @fn void write (const matrix<U>&, T)
       * @brief  Записать матрицу в файл
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
