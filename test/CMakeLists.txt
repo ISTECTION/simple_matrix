@@ -9,11 +9,6 @@ set(SOURCES_TEST_FILE
 
 add_executable(unit_tests ${SOURCES_TEST_FILE})
 
-# add_custom_command(TARGET unit_tests POST_BUILD
-#     COMMAND ${CMAKE_COMMAND} -E copy_directory
-#             ${CMAKE_CURRENT_SOURCE_DIR}/file
-#             ${CMAKE_CURRENT_BINARY_DIR}/file)
-
 target_link_libraries(unit_tests
     simple::matrix
     Catch2::Catch2
