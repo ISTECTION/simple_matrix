@@ -115,7 +115,7 @@ namespace simple {
       * @brief  Чтение вектора из файла неизвестного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
-      * @param[out] _vec  Вектор в который будут записаны данные
+      * @param[out] _vec  Вектор в который будет произведена запись
       * @param[in]  _path Путь до файла
       * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
       */
@@ -140,7 +140,7 @@ namespace simple {
       * @brief  Чтение вектора из файла известного размера
       * @tparam U Любые целочисленные и вещественные типы
       * @tparam T std::filesystem::path || std::string
-      * @param[out] _vec   Вектор в который будут записаны данные
+      * @param[out] _vec   Вектор в который будет произведена запись
       * @param[in]  _path  Путь до файла
       * @param[in]  _count Количество елементов
       * @exception exception::TYPE::LITTLE_DATA_ERROR  В случае невозможности считать данное количестов элементов из файла

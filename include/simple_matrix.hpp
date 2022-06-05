@@ -102,9 +102,18 @@ namespace simple {
           */
         void set_collumn (std::size_t _col, const simple::vector<T>& _col_v);
 
-
+        /** @fn matrix<T> transpose () const
+          * @brief Получить транспонированную матрицу
+          * @return Транспонированную матрицу
+          */
         matrix<T> transpose () const;
 
+        /** @fn matrix<T> submatrix (std::size_t i, std::size_t j) const
+          * @brief Получить подматрицу
+          * @param i Номер строки
+          * @param j Номер столбца
+          * @return Подматрицу
+          */
         matrix<T> submatrix (std::size_t i, std::size_t j) const;
 
         matrix<T> minor_matrix () const;
@@ -554,6 +563,14 @@ namespace simple {
         return A;
     }
 
+    /** @fn void read (matrix<U>& _matrix, T _path)
+      * @brief  Чтение матрицы из файла неизвестного размера
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param[out] _matrix Матрица в которую будет произведена запись
+      * @param[in]  _path  Путь до файла
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Matrix_Type U>
     void read (matrix<U>& _matrix, T _path) {
 
@@ -579,6 +596,16 @@ namespace simple {
         }
     }
 
+    /** @fn void read (matrix<U>& _matrix, T _path, std::size_t _row_count, std::size_t _col_count)
+      * @brief  Чтение матрицы из файла известного размера
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param[out] _matrix Матрица в которую будет произведена запись
+      * @param[in]  _path  Путь до файла
+      * @param[in]  _row_count Количество строк матрицы
+      * @param[in]  _col_count Количество столбцов матрицы
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Matrix_Type U>
     void read (matrix<U>& _matrix, T _path, std::size_t _row_count, std::size_t _col_count) {
 
@@ -598,6 +625,14 @@ namespace simple {
         }
     }
 
+    /** @fn void write (const matrix<U>& _matrix, T _path)
+      * @brief  Записать матрицу в файл
+      * @tparam U Любые целочисленные и вещественные типы
+      * @tparam T std::filesystem::path || std::string
+      * @param _matrix Сохраняемая матрица
+      * @param _path Путь к файлу
+      * @exception exception::TYPE::FILE_OPENING_ERROR В случае неудачи при открытии файла
+      */
     template <_File_type T, _Matrix_Type U>
     void write (const matrix<U>& _matrix, T _path) {
 
