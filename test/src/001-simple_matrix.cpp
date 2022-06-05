@@ -260,3 +260,43 @@ TEST_CASE("matrix subtraction", "[operator-=] [operator-]") {
     REQUIRE_THROWS(_mtx1 - _mtx2);
 }
 
+TEST_CASE("matrix multiplication", "[operator*=] [operator*]") {
+    simple::matrix<int> _mtx1 = {
+        { 5, 4, 3 },
+        { 1, 2, 3 },
+        { 6, 4, 5 } };
+    simple::matrix<int> _mtx2 = {
+        { 7, 8, 5 },
+        { 6, 3, 2 },
+        { 3, 6, 6 } };
+    simple::matrix<int> _actual = _mtx1 * _mtx2;
+    simple::matrix<int> _expected = {
+        { 68, 70, 51 },
+        { 28, 32, 27 },
+        { 81, 90, 68 } };
+    REQUIRE(_expected == _actual);
+    _mtx1 = {
+        { 1, 3, 5 },
+        { 3, 2, 8 },
+        { 9, 4, 2 },
+        { 4, 8, 1 } };
+    _mtx2 = {
+        { 3, 4 },
+        { 2, 6 },
+        { 1, 7 } };
+    _actual = _mtx1 * _mtx2;
+    _expected = {
+        { 14, 57 },
+        { 21, 80 },
+        { 37, 74 },
+        { 29, 71 } };
+    REQUIRE(_actual.size_rows() == 4);
+    REQUIRE(_actual.size_collumns() == 2);
+    REQUIRE(_expected == _actual);
+    _mtx2 = {
+        { 3, 4 },
+        { 2, 6 },
+        { 6, 3 },
+        { 1, 7 } };
+    REQUIRE_THROWS(_mtx1 * _mtx2);
+}
