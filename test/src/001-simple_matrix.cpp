@@ -229,6 +229,12 @@ TEST_CASE("matrix addition", "[operator+=] [operator+]") {
         {  7, 11, 5  },
         {  9, 10, 11 } };
     REQUIRE(_expected == _actual);
+    simple::matrix<int> _mtx2 = {
+        { 7, 8, 5 },
+        { 6, 9, 2 },
+        { 3, 6, 6 },
+        { 4, 3, 9 } };
+    REQUIRE_THROWS(_mtx1 + _mtx2);
 }
 
 TEST_CASE("matrix subtraction", "[operator-=] [operator-]") {
@@ -246,4 +252,11 @@ TEST_CASE("matrix subtraction", "[operator-=] [operator-]") {
         { -5, -7,  1 },
         {  3, -2, -1 } };
     REQUIRE(_expected == _actual);
+    simple::matrix<int> _mtx2 = {
+        { 7, 8, 5 },
+        { 6, 9, 2 },
+        { 3, 6, 6 },
+        { 4, 3, 9 } };
+    REQUIRE_THROWS(_mtx1 - _mtx2);
 }
+
