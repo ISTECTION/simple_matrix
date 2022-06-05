@@ -213,3 +213,37 @@ TEST_CASE("printing a matrix to the console", "[operator<<] [pretty]") {
         )
     );
 }
+
+TEST_CASE("matrix addition", "[operator+=] [operator+]") {
+    simple::matrix<int> _mtx1 = {
+        { 5, 4, 3 },
+        { 1, 2, 3 },
+        { 6, 4, 5 } };
+    simple::matrix<int> _mtx2 = {
+        { 7, 8, 5 },
+        { 6, 9, 2 },
+        { 3, 6, 6 } };
+    simple::matrix<int> _actual = _mtx1 + _mtx2;
+    simple::matrix<int> _expected = {
+        { 12, 12, 8  },
+        {  7, 11, 5  },
+        {  9, 10, 11 } };
+    REQUIRE(_expected == _actual);
+}
+
+TEST_CASE("matrix subtraction", "[operator-=] [operator-]") {
+    simple::matrix<int> _mtx1 = {
+        { 5, 4, 3 },
+        { 1, 2, 3 },
+        { 6, 4, 5 } };
+    simple::matrix<int> _mtx2 = {
+        { 7, 8, 5 },
+        { 6, 9, 2 },
+        { 3, 6, 6 } };
+    simple::matrix<int> _actual = _mtx1 - _mtx2;
+    simple::matrix<int> _expected = {
+        { -2, -4, -2 },
+        { -5, -7,  1 },
+        {  3, -2, -1 } };
+    REQUIRE(_expected == _actual);
+}
