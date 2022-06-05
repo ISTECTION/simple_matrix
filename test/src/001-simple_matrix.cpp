@@ -194,3 +194,22 @@ TEST_CASE("determinant", "[determinant]") {
         - 1 * 4 * 5;
     REQUIRE(_expected == _actual);
 }
+
+TEST_CASE("printing a matrix to the console", "[operator<<] [pretty]") {
+    simple::matrix<int> _mtx1 = {
+        { 5, 4, 3 },
+        { 1, 2, 3 },
+        { 6, 4, 5 } };
+    std::ostringstream _ostream;
+    _ostream << _mtx1;
+    using Catch::Matchers::Equals;
+    REQUIRE_THAT(
+        _ostream.str(), Equals(
+            "┌─         ─┐\n"
+            "│  5  4  3  │\n"
+            "│  1  2  3  │\n"
+            "│  6  4  5  │\n"
+            "└─         ─┘"
+        )
+    );
+}
