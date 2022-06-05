@@ -260,7 +260,7 @@ TEST_CASE("matrix subtraction", "[operator-=] [operator-]") {
     REQUIRE_THROWS(_mtx1 - _mtx2);
 }
 
-TEST_CASE("matrix multiplication", "[operator*=] [operator*] [matrix]") {
+TEST_CASE("matrix multiplication matrix", "[operator*=] [operator*] [matrix]") {
     simple::matrix<int> _mtx1 = {
         { 5, 4, 3 },
         { 1, 2, 3 },
@@ -302,7 +302,7 @@ TEST_CASE("matrix multiplication", "[operator*=] [operator*] [matrix]") {
     REQUIRE_THROWS(_mtx1 * _mtx2);
 }
 
-TEST_CASE("matrix multiplication", "[operator*=] [operator*] [koef]") {
+TEST_CASE("matrix multiplication koef", "[operator*=] [operator*] [koef]") {
     simple::matrix<int> _mtx1 = {
         { 5, 4, 3 },
         { 1, 2, 3 },

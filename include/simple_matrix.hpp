@@ -483,11 +483,8 @@ namespace simple {
             simple::vector<T> _row(_Bsc);
             for (size_t j : iota(0ull, _Bsc)) {
                 T _sum = 0;
-
-                for (size_t k : iota(0ull, size_collumns())) {
-                    std::cout << i << ' ' << k << ':' << (*this)[i][k] << ' ' <<  B[k][j] << '\n';
+                for (size_t k : iota(0ull, size_collumns()))
                     _sum += (*this)[i][k] * B[k][j];
-                }
                 _row[j] = _sum;
             }
             this->set_row(i, _row);
