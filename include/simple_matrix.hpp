@@ -512,8 +512,14 @@ namespace simple {
         return *this;
     }
 
+    /** @fn std::ostream& operator<< (std::ostream&, const matrix<T>&)
+      * @brief  Вывод матрицы в поток
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param _out Поток для записи матрицы
+      * @param _mtx Сама матрица
+      */
     template <_Matrix_Type T>
-    std::ostream& operator<< (std::ostream& out, const matrix<T>& A) { return out << A.pretty(); }
+    std::ostream& operator<< (std::ostream& _out, const matrix<T>& _mtx) { return _out << _mtx.pretty(); }
 
     template <_Matrix_Type T>
     matrix<T> operator+ (const matrix<T>& A, const matrix<T>& B) {
