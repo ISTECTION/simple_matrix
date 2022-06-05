@@ -413,8 +413,7 @@ std::cout << _mtx.cofactor_matrix() << std::endl;
 └─               ─┘
 ```
 
-Подробнее о вычислении кофактора и кофакторной матрицы можно узнать [здесь](
-https://ru.abcdef.wiki/wiki/Minor_\(linear_algebra\)#:~:text=Матрица%2C%20образованная%20всеми%20кофакторами%20квадратной,матрицей%20кофакторов%20или%2C%20иногда%2C%20коматриксом\)%3A)
+Подробнее о вычислении кофактора и кофакторной матрицы можно узнать [здесь](https://forma-slova.com/ru/articles/3978-calculating-the-cofactor-the-cofactor-in-the-calculation-of)
 
 ## Полезные ссылки
 
