@@ -47,8 +47,14 @@ if(SIMPLE_MATRIX_DOC)
         set(DOXYGEN_PROJECT_BRIEF  "operations with vectors and matrices")
         set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
 
-        set(DOXYGEN_HAVE_DOT $<DEFINED DOXYGEN_DOT_PATH:YES,NO>>)
-        message(STATUS "DOXYGEN_HAVE_DOT ${DOXYGEN_HAVE_DOT}")
+        macro(ternary var boolean value1 value2)
+            if(${boolean})
+                set(${var} ${value1})
+            else()
+                set(${var} ${value2})
+            endif()
+        endmacro()
+        ternary(DOXYGEN_HAVE_DOT DOXYGEN_DOT_PATH YES NO)
 
 
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.doxygen.in Doxyfile.doxygen @ONLY)
