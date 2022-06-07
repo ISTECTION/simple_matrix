@@ -47,6 +47,10 @@ if(SIMPLE_MATRIX_DOC)
         set(DOXYGEN_PROJECT_BRIEF  "operations with vectors and matrices")
         set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
 
+        set(DOXYGEN_HAVE_DOT $<DEFINED DOXYGEN_DOT_PATH:YES,NO>>)
+        message(STATUS "DOXYGEN_HAVE_DOT ${DOXYGEN_HAVE_DOT}")
+
+
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.doxygen.in Doxyfile.doxygen @ONLY)
         file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/docs/styles DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
