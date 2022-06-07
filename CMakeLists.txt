@@ -47,15 +47,14 @@ if(SIMPLE_MATRIX_DOC)
         set(DOXYGEN_PROJECT_BRIEF  "operations with vectors and matrices")
         set(DOXYGEN_PROJECT_NUMBER ${SIMPLE_MATRIX_VERSION})
 
-        macro(ternary var boolean value1 value2)
+        macro(TERNARY var boolean value1 value2)
             if(${boolean})
                 set(${var} ${value1})
             else()
                 set(${var} ${value2})
             endif()
         endmacro()
-        ternary(DOXYGEN_HAVE_DOT DOXYGEN_DOT_PATH YES NO)
-
+        ternary(DOXYGEN_HAVE_DOT DOXYGEN_DOT_FOUND YES NO)
 
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.doxygen.in Doxyfile.doxygen @ONLY)
         file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/docs/styles DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
