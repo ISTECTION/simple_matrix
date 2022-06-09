@@ -1,0 +1,1008 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>simple_matrix: Шаблон класса simple::matrix&lt; T &gt;</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="icon" type="image/svg+xml" href="^"/> -->
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="../../doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="../../toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+</script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="../../custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="../../doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="../../custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<a href="https://github.com/ISTECTION/simple_matrix" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">simple_matrix
+   &#160;<span id="projectnumber">v1.0.1-64-g04e659a</span>
+   </div>
+   <div id="projectbrief">operations with vectors and matrices</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d19/classsimple_1_1matrix.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="../../d4/d84/classsimple_1_1matrix-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Шаблон класса simple::matrix&lt; T &gt;<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Простой матричный класс  
+ <a href="../../d4/d19/classsimple_1_1matrix.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/de9/simple__matrix_8hpp_source.html">simple_matrix.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:simple::matrix&lt; T &gt;:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d0/d20/classsimple_1_1matrix__inherit__graph.svg" width="146" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">см. легенду</a>]</span></center></div>
+<div class="dynheader">
+Граф связей класса simple::matrix&lt; T &gt;:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d23/classsimple_1_1matrix__coll__graph.svg" width="146" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a target="top" href="../../graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a50d8874b066b37454123994bd64a7f0d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a50d8874b066b37454123994bd64a7f0d">matrix</a> (std::size_t _sr, std::size_t _sc) noexcept</td></tr>
+<tr class="separator:a50d8874b066b37454123994bd64a7f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa48b5f791ea0f774848733b7fbd138d"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#aaa48b5f791ea0f774848733b7fbd138d">size_rows</a> () const noexcept</td></tr>
+<tr class="separator:aaa48b5f791ea0f774848733b7fbd138d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7a652eb00386c86273d1cb82ef55d4"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a6f7a652eb00386c86273d1cb82ef55d4">size_collumns</a> () const noexcept</td></tr>
+<tr class="separator:a6f7a652eb00386c86273d1cb82ef55d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2ab34ee4676c1f40e33056cd06365e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#ac2ab34ee4676c1f40e33056cd06365e5">is_square</a> () const noexcept</td></tr>
+<tr class="separator:ac2ab34ee4676c1f40e33056cd06365e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e36e4e3b2271920b513a791d8090a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#ad4e36e4e3b2271920b513a791d8090a5">is_rectangular_matrix</a> () const noexcept</td></tr>
+<tr class="separator:ad4e36e4e3b2271920b513a791d8090a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a7a711069a35d602fe281e3f28e213"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a44a7a711069a35d602fe281e3f28e213">is_upper_triangulator</a> () const noexcept</td></tr>
+<tr class="separator:a44a7a711069a35d602fe281e3f28e213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af661c1c5762164b6d4e97e3dd04fa669"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#af661c1c5762164b6d4e97e3dd04fa669">is_lower_triangulator</a> () const noexcept</td></tr>
+<tr class="separator:af661c1c5762164b6d4e97e3dd04fa669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1497d111a71da1a3d903dcac0a539aaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a1497d111a71da1a3d903dcac0a539aaf">is_diagonal</a> () const noexcept</td></tr>
+<tr class="separator:a1497d111a71da1a3d903dcac0a539aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e509aab8c23f32da4045473ec6ff9e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a1e509aab8c23f32da4045473ec6ff9e6">is_identity_matrix</a> () const noexcept</td></tr>
+<tr class="separator:a1e509aab8c23f32da4045473ec6ff9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157c5fde57b1e0dbaa149bc9ddc3b373"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a157c5fde57b1e0dbaa149bc9ddc3b373">get_row</a> (std::size_t _row) const</td></tr>
+<tr class="memdesc:a157c5fde57b1e0dbaa149bc9ddc3b373"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить строку матрицы  <a href="../../d4/d19/classsimple_1_1matrix.html#a157c5fde57b1e0dbaa149bc9ddc3b373">Подробнее...</a><br /></td></tr>
+<tr class="separator:a157c5fde57b1e0dbaa149bc9ddc3b373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b73478d1851d85d8c32c1d82bb3c6ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a8b73478d1851d85d8c32c1d82bb3c6ae">get_collumn</a> (std::size_t _col) const</td></tr>
+<tr class="memdesc:a8b73478d1851d85d8c32c1d82bb3c6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить столбец матрицы  <a href="../../d4/d19/classsimple_1_1matrix.html#a8b73478d1851d85d8c32c1d82bb3c6ae">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8b73478d1851d85d8c32c1d82bb3c6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c109673f3aedcf9706f565a2c50890e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a4c109673f3aedcf9706f565a2c50890e">set_row</a> (std::size_t _row, const <a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; &amp;_row_v)</td></tr>
+<tr class="memdesc:a4c109673f3aedcf9706f565a2c50890e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить строку в матрицу  <a href="../../d4/d19/classsimple_1_1matrix.html#a4c109673f3aedcf9706f565a2c50890e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4c109673f3aedcf9706f565a2c50890e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae774e66f1b6322124a0adb7cb102072e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#ae774e66f1b6322124a0adb7cb102072e">set_collumn</a> (std::size_t _col, const <a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; &amp;_col_v)</td></tr>
+<tr class="memdesc:ae774e66f1b6322124a0adb7cb102072e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить столбец в матрицу  <a href="../../d4/d19/classsimple_1_1matrix.html#ae774e66f1b6322124a0adb7cb102072e">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae774e66f1b6322124a0adb7cb102072e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbbaeabd53dab9ca6d0890a7c49a07ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#abbbaeabd53dab9ca6d0890a7c49a07ef">transpose</a> () const</td></tr>
+<tr class="memdesc:abbbaeabd53dab9ca6d0890a7c49a07ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить транспонированную матрицу  <a href="../../d4/d19/classsimple_1_1matrix.html#abbbaeabd53dab9ca6d0890a7c49a07ef">Подробнее...</a><br /></td></tr>
+<tr class="separator:abbbaeabd53dab9ca6d0890a7c49a07ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d4395b7d496597b6d2e6d61ad0922c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a2d4395b7d496597b6d2e6d61ad0922c0">submatrix</a> (std::size_t i, std::size_t j) const</td></tr>
+<tr class="memdesc:a2d4395b7d496597b6d2e6d61ad0922c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить подматрицу  <a href="../../d4/d19/classsimple_1_1matrix.html#a2d4395b7d496597b6d2e6d61ad0922c0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2d4395b7d496597b6d2e6d61ad0922c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b736f4fd853b00fc8e90ce4a777808c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a1b736f4fd853b00fc8e90ce4a777808c">minor_matrix</a> () const</td></tr>
+<tr class="separator:a1b736f4fd853b00fc8e90ce4a777808c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad964ae323a81cd2812337980fc46d452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#ad964ae323a81cd2812337980fc46d452">cofactor_matrix</a> () const</td></tr>
+<tr class="separator:ad964ae323a81cd2812337980fc46d452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae000ab4fde6065c087b6abca16119672"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#ae000ab4fde6065c087b6abca16119672">adj</a> () const</td></tr>
+<tr class="separator:ae000ab4fde6065c087b6abca16119672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2948165d9828701009aa72cf6258b473"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a2948165d9828701009aa72cf6258b473">invert</a> () const</td></tr>
+<tr class="separator:a2948165d9828701009aa72cf6258b473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f75a9f7350a5488e3c616c7906f3126"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a5f75a9f7350a5488e3c616c7906f3126">trace</a> () const</td></tr>
+<tr class="separator:a5f75a9f7350a5488e3c616c7906f3126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeec9714d080ea9842bee64c83bd67d7"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#abeec9714d080ea9842bee64c83bd67d7">minor_determinant</a> (std::size_t i, std::size_t j) const</td></tr>
+<tr class="separator:abeec9714d080ea9842bee64c83bd67d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3e4b9d7a16f2c5ef8175b77e43fd21"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a2c3e4b9d7a16f2c5ef8175b77e43fd21">cofactor</a> (std::size_t i, std::size_t j) const</td></tr>
+<tr class="separator:a2c3e4b9d7a16f2c5ef8175b77e43fd21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af352a05daeeda1b1fecd00062e0245da"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#af352a05daeeda1b1fecd00062e0245da">determinant</a> () const</td></tr>
+<tr class="separator:af352a05daeeda1b1fecd00062e0245da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb67319d9f163e42680302ed9ab716b1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d96/group__pretty.html#gaeb67319d9f163e42680302ed9ab716b1">pretty</a> () const noexcept</td></tr>
+<tr class="separator:gaeb67319d9f163e42680302ed9ab716b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da6b75c7e7f6638824f09c66c8bde77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a2da6b75c7e7f6638824f09c66c8bde77">operator+=</a> (const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;A)</td></tr>
+<tr class="separator:a2da6b75c7e7f6638824f09c66c8bde77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d758f7e5384e9094c55ef440952309a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a1d758f7e5384e9094c55ef440952309a">operator-=</a> (const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;A)</td></tr>
+<tr class="separator:a1d758f7e5384e9094c55ef440952309a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7500f30f827b284954ce065920ca05dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#a7500f30f827b284954ce065920ca05dd">operator*=</a> (const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;B)</td></tr>
+<tr class="separator:a7500f30f827b284954ce065920ca05dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28cd8a287a0ba66e413fe68de94f44d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#af28cd8a287a0ba66e413fe68de94f44d">operator*=</a> (double _koef)</td></tr>
+<tr class="separator:af28cd8a287a0ba66e413fe68de94f44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea1d0306d88d3dd2e284dbb38428e19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html#abea1d0306d88d3dd2e284dbb38428e19">operator/=</a> (double _koef)</td></tr>
+<tr class="separator:abea1d0306d88d3dd2e284dbb38428e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a2396209900e8f592db1f0b2467f7d899"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d4e/classstd_1_1vector.html#a2396209900e8f592db1f0b2467f7d899">elements</a></td></tr>
+<tr class="memdesc:a2396209900e8f592db1f0b2467f7d899"><td class="mdescLeft">&#160;</td><td class="mdescRight">STL member.  <a href="../../dd/d4e/classstd_1_1vector.html#a2396209900e8f592db1f0b2467f7d899">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2396209900e8f592db1f0b2467f7d899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt;<br />
+class simple::matrix&lt; T &gt;</div><p >Простой матричный класс </p>
+<p >В данном классе реализованы все возможные функции взаимодействия с матрицами </p><dl class="tparams"><dt>Параметры шаблона</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Любые целочисленные и вещественные типы </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a50d8874b066b37454123994bd64a7f0d" name="a50d8874b066b37454123994bd64a7f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50d8874b066b37454123994bd64a7f0d">&#9670;&nbsp;</a></span>matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::<a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_sr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_sc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="ae000ab4fde6065c087b6abca16119672" name="ae000ab4fde6065c087b6abca16119672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae000ab4fde6065c087b6abca16119672">&#9670;&nbsp;</a></span>adj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::adj</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c3e4b9d7a16f2c5ef8175b77e43fd21" name="a2c3e4b9d7a16f2c5ef8175b77e43fd21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c3e4b9d7a16f2c5ef8175b77e43fd21">&#9670;&nbsp;</a></span>cofactor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::cofactor </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad964ae323a81cd2812337980fc46d452" name="ad964ae323a81cd2812337980fc46d452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad964ae323a81cd2812337980fc46d452">&#9670;&nbsp;</a></span>cofactor_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::cofactor_matrix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af352a05daeeda1b1fecd00062e0245da" name="af352a05daeeda1b1fecd00062e0245da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af352a05daeeda1b1fecd00062e0245da">&#9670;&nbsp;</a></span>determinant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::determinant</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b73478d1851d85d8c32c1d82bb3c6ae" name="a8b73478d1851d85d8c32c1d82bb3c6ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b73478d1851d85d8c32c1d82bb3c6ae">&#9670;&nbsp;</a></span>get_collumn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::get_collumn </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_col</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить столбец матрицы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_col</td><td>Номер столбца </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вектор </dd></dl>
+
+</div>
+</div>
+<a id="a157c5fde57b1e0dbaa149bc9ddc3b373" name="a157c5fde57b1e0dbaa149bc9ddc3b373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157c5fde57b1e0dbaa149bc9ddc3b373">&#9670;&nbsp;</a></span>get_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::get_row </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_row</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить строку матрицы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_row</td><td>Номер строки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вектор </dd></dl>
+
+</div>
+</div>
+<a id="a2948165d9828701009aa72cf6258b473" name="a2948165d9828701009aa72cf6258b473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2948165d9828701009aa72cf6258b473">&#9670;&nbsp;</a></span>invert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::invert</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1497d111a71da1a3d903dcac0a539aaf" name="a1497d111a71da1a3d903dcac0a539aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1497d111a71da1a3d903dcac0a539aaf">&#9670;&nbsp;</a></span>is_diagonal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_diagonal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является диагональной</li>
+<li>false : Если матрица не является диагональной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a1e509aab8c23f32da4045473ec6ff9e6" name="a1e509aab8c23f32da4045473ec6ff9e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e509aab8c23f32da4045473ec6ff9e6">&#9670;&nbsp;</a></span>is_identity_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_identity_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является единичной</li>
+<li>false : Если матрица не является единичной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="af661c1c5762164b6d4e97e3dd04fa669" name="af661c1c5762164b6d4e97e3dd04fa669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af661c1c5762164b6d4e97e3dd04fa669">&#9670;&nbsp;</a></span>is_lower_triangulator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_lower_triangulator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является нижнетреугольной</li>
+<li>false : Если матрица не является нижнетреугольной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="ad4e36e4e3b2271920b513a791d8090a5" name="ad4e36e4e3b2271920b513a791d8090a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e36e4e3b2271920b513a791d8090a5">&#9670;&nbsp;</a></span>is_rectangular_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_rectangular_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является прямоугольной</li>
+<li>false : Если матрица не является прямоугольной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="ac2ab34ee4676c1f40e33056cd06365e5" name="ac2ab34ee4676c1f40e33056cd06365e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2ab34ee4676c1f40e33056cd06365e5">&#9670;&nbsp;</a></span>is_square()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_square</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является квадратной</li>
+<li>false : Если матрица не является квадратной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a44a7a711069a35d602fe281e3f28e213" name="a44a7a711069a35d602fe281e3f28e213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a7a711069a35d602fe281e3f28e213">&#9670;&nbsp;</a></span>is_upper_triangulator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::is_upper_triangulator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd><ul>
+<li>true : Если матрица является верхнетреугольной</li>
+<li>false : Если матрица не является верхнетреугольной </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="abeec9714d080ea9842bee64c83bd67d7" name="abeec9714d080ea9842bee64c83bd67d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeec9714d080ea9842bee64c83bd67d7">&#9670;&nbsp;</a></span>minor_determinant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::minor_determinant </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b736f4fd853b00fc8e90ce4a777808c" name="a1b736f4fd853b00fc8e90ce4a777808c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b736f4fd853b00fc8e90ce4a777808c">&#9670;&nbsp;</a></span>minor_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::minor_matrix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7500f30f827b284954ce065920ca05dd" name="a7500f30f827b284954ce065920ca05dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7500f30f827b284954ce065920ca05dd">&#9670;&nbsp;</a></span>operator*=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>B</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af28cd8a287a0ba66e413fe68de94f44d" name="af28cd8a287a0ba66e413fe68de94f44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28cd8a287a0ba66e413fe68de94f44d">&#9670;&nbsp;</a></span>operator*=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_koef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2da6b75c7e7f6638824f09c66c8bde77" name="a2da6b75c7e7f6638824f09c66c8bde77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da6b75c7e7f6638824f09c66c8bde77">&#9670;&nbsp;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d758f7e5384e9094c55ef440952309a" name="a1d758f7e5384e9094c55ef440952309a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d758f7e5384e9094c55ef440952309a">&#9670;&nbsp;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>A</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abea1d0306d88d3dd2e284dbb38428e19" name="abea1d0306d88d3dd2e284dbb38428e19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea1d0306d88d3dd2e284dbb38428e19">&#9670;&nbsp;</a></span>operator/=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; &amp; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_koef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae774e66f1b6322124a0adb7cb102072e" name="ae774e66f1b6322124a0adb7cb102072e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae774e66f1b6322124a0adb7cb102072e">&#9670;&nbsp;</a></span>set_collumn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::set_collumn </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_col_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Установить столбец в матрицу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_col</td><td>Номер столбца </td></tr>
+    <tr><td class="paramname">_col_v</td><td>Вектор </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c109673f3aedcf9706f565a2c50890e" name="a4c109673f3aedcf9706f565a2c50890e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c109673f3aedcf9706f565a2c50890e">&#9670;&nbsp;</a></span>set_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::set_row </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>_row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../dd/d3b/classsimple_1_1vector.html">simple::vector</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_row_v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Установить строку в матрицу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_row</td><td>Номер строки </td></tr>
+    <tr><td class="paramname">_row_v</td><td>Вектор </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6f7a652eb00386c86273d1cb82ef55d4" name="a6f7a652eb00386c86273d1cb82ef55d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7a652eb00386c86273d1cb82ef55d4">&#9670;&nbsp;</a></span>size_collumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::size_collumns</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Количество столбцов матрицы </dd></dl>
+
+</div>
+</div>
+<a id="aaa48b5f791ea0f774848733b7fbd138d" name="aaa48b5f791ea0f774848733b7fbd138d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa48b5f791ea0f774848733b7fbd138d">&#9670;&nbsp;</a></span>size_rows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::size_rows</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Возвращает</dt><dd>Количество строк матрицы </dd></dl>
+
+</div>
+</div>
+<a id="a2d4395b7d496597b6d2e6d61ad0922c0" name="a2d4395b7d496597b6d2e6d61ad0922c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4395b7d496597b6d2e6d61ad0922c0">&#9670;&nbsp;</a></span>submatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::submatrix </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить подматрицу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Номер строки </td></tr>
+    <tr><td class="paramname">j</td><td>Номер столбца </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Подматрицу </dd></dl>
+
+</div>
+</div>
+<a id="a5f75a9f7350a5488e3c616c7906f3126" name="a5f75a9f7350a5488e3c616c7906f3126"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f75a9f7350a5488e3c616c7906f3126">&#9670;&nbsp;</a></span>trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::trace</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbbaeabd53dab9ca6d0890a7c49a07ef" name="abbbaeabd53dab9ca6d0890a7c49a07ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbbaeabd53dab9ca6d0890a7c49a07ef">&#9670;&nbsp;</a></span>transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="../../df/d9d/concept___matrix___type.html">_Matrix_Type</a> T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a>&lt; T &gt; <a class="el" href="../../d4/d19/classsimple_1_1matrix.html">simple::matrix</a>&lt; T &gt;::transpose</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить транспонированную матрицу </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Транспонированную матрицу </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a2396209900e8f592db1f0b2467f7d899" name="a2396209900e8f592db1f0b2467f7d899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2396209900e8f592db1f0b2467f7d899">&#9670;&nbsp;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T std::vector&lt; T &gt;::elements</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>STL member. </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>include/<a class="el" href="../../d8/de9/simple__matrix_8hpp_source.html">simple_matrix.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dc/d82/namespacesimple.html">simple</a></li><li class="navelem"><a class="el" href="../../d4/d19/classsimple_1_1matrix.html">matrix</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -5,18 +5,15 @@
 #include "utils/lightweight.hpp"
 #include "common.hpp"
 
-#include <algorithm>
-#include <iterator>
-
-#include <unordered_map>    /// std::unordered_map
-#include <iostream>         /// std::cout
-#include <numeric>          /// std::inner_product
-#include <sstream>          /// std::ostringstream
-#include <iomanip>          /// std::setw
-#include <fstream>          /// std::ifstream
-#include <string>           /// std::string
-#include <vector>           /// std::vector
-#include <ranges>
+#include <unordered_map>    ///< std::unordered_map
+#include <iostream>         ///< std::cout
+#include <numeric>          ///< std::inner_product
+#include <sstream>          ///< std::ostringstream
+#include <iomanip>          ///< std::setw
+#include <fstream>          ///< std::ifstream
+#include <string>           ///< std::string
+#include <vector>           ///< std::vector
+#include <ranges>           ///< std::views
 
 #include <windows.h>
 
