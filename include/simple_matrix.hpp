@@ -157,6 +157,11 @@ namespace simple {
           */
         matrix<T>& operator-= (const matrix<T>& A);
 
+        /** @fn matrix<T>& operator*= (const matrix<T>&)
+          * @brief Перегрузка операции умножения
+          * @param B Матрица на которую будет произведено умножение
+          * @return Ссылка на текущий экземпляр класса
+          */
         matrix<T>& operator*= (const matrix<T>& B);
 
         matrix<T>& operator*= (double _koef);
