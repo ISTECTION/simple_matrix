@@ -171,6 +171,11 @@ namespace simple {
           */
         matrix<T>& operator*= (double _koef);
 
+        /** @fn matrix<T>& operator/= (double)
+          * @brief Перегрузка операции деления на коэффициент
+          * @param _koef Коэффициент на который будет разделена матрица
+          * @return Ссылка на текущий экземпляр класса
+          */
         matrix<T>& operator/= (double _koef);
     };
 
