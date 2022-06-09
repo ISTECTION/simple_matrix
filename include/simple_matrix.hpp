@@ -166,17 +166,17 @@ namespace simple {
 
         /** @fn matrix<T>& operator*= (double)
           * @brief Перегрузка операции умножения на коэффициент
-          * @param _koef Коэффициент на который будет домножена матрица
+          * @param _koef Коэффициент на который будет умножена матрица
           * @return Ссылка на текущий экземпляр класса
           */
-        matrix<T>& operator*= (double _koef);
+        matrix<T>& operator*= (T _koef);
 
         /** @fn matrix<T>& operator/= (double)
           * @brief Перегрузка операции деления на коэффициент
           * @param _koef Коэффициент на который будет разделена матрица
           * @return Ссылка на текущий экземпляр класса
           */
-        matrix<T>& operator/= (double _koef);
+        matrix<T>& operator/= (T _koef);
     };
 
     template <_Matrix_Type T>
@@ -545,6 +545,13 @@ namespace simple {
     template <_Matrix_Type T>
     std::ostream& operator<< (std::ostream& _out, const matrix<T>& _mtx) { return _out << _mtx.pretty(); }
 
+    /** @fn matrix<T> operator+ (const matrix<T>&, const matrix<T>&)
+      * @brief  Перегрузка операции сложения
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param A Матрица расположенная слева от операции
+      * @param B Матрица расположенная справа от операции
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator+ (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
@@ -552,6 +559,13 @@ namespace simple {
         return _Tmp;
     }
 
+    /** @fn matrix<T> operator- (const matrix<T>&, const matrix<T>&)
+      * @brief  Перегрузка операции вычитания
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param A Матрица расположенная слева от операции
+      * @param B Матрица расположенная справа от операции
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator- (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
@@ -559,6 +573,13 @@ namespace simple {
         return _Tmp;
     }
 
+    /** @fn matrix<T> operator* (const matrix<T>&, const matrix<T>&)
+      * @brief  Перегрузка операции умножения на матрицу
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param A Матрица расположенная слева от операции
+      * @param B Матрица расположенная справа от операции
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator* (const matrix<T>& A, const matrix<T>& B) {
         matrix<T> _Tmp(A);
@@ -566,6 +587,17 @@ namespace simple {
         return _Tmp;
     }
 
+    /** @fn matrix<T> operator* (const matrix<T>&, T)
+      * @brief  Перегрузка операции умножения на коэффициент,
+      * расположенный правее от матрицы
+      *
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param  A    Матрица расположенная слева от операции
+      * @param _koef Коэффициент, расположенный справа от
+      * матрицы, на который будет умножена матрица
+      *
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator* (const matrix<T>& A, T _koef) {
         matrix<T> _Tmp(A);
@@ -573,11 +605,31 @@ namespace simple {
         return _Tmp;
     }
 
+    /** @fn matrix<T> operator* (T, const matrix<T>&)
+      * @brief  Перегрузка операции умножения на коэффициент,
+      * расположенный левее матрицы
+      *
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param  A    Матрица расположенная справа от операции
+      * @param _koef Коэффициент, расположенный слева от
+      * матрицы, на который будет умножена матрица
+      *
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator* (T _koef, const matrix<T>& A) {
         return A * _koef;
     }
 
+    /** @fn matrix<T> operator/ (const matrix<T>&, T)
+      * @brief  Перегрузка операции деления на коэффициент
+      * @tparam T Любые целочисленные и вещественные типы
+      * @param  A    Матрица расположенная слева от операции
+      * @param _koef Коэффициент, расположенный справа от
+      * матрицы, на который будет разделена матрица
+      *
+      * @return Копия экземляра класса
+      */
     template <_Matrix_Type T>
     matrix<T> operator/ (const matrix<T>& A, T _koef) {
         matrix<T> _Tmp(A);
