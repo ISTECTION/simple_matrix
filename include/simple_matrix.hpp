@@ -164,14 +164,14 @@ namespace simple {
           */
         matrix<T>& operator*= (const matrix<T>& B);
 
-        /** @fn matrix<T>& operator*= (double)
+        /** @fn matrix<T>& operator*= (T)
           * @brief Перегрузка операции умножения на коэффициент
           * @param _koef Коэффициент на который будет умножена матрица
           * @return Ссылка на текущий экземпляр класса
           */
         matrix<T>& operator*= (T _koef);
 
-        /** @fn matrix<T>& operator/= (double)
+        /** @fn matrix<T>& operator/= (T)
           * @brief Перегрузка операции деления на коэффициент
           * @param _koef Коэффициент на который будет разделена матрица
           * @return Ссылка на текущий экземпляр класса
@@ -517,7 +517,7 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    matrix<T>& matrix<T>::operator*= (double _koef) {
+    matrix<T>& matrix<T>::operator*= (T _koef) {
         std::size_t _sizecollumn = size_collumns();
         using std::views::iota;
         for (size_t i : iota(0ull, this->size()))
@@ -527,7 +527,7 @@ namespace simple {
     }
 
     template <_Matrix_Type T>
-    matrix<T>& matrix<T>::operator/= (double _koef) {
+    matrix<T>& matrix<T>::operator/= (T _koef) {
         std::size_t _sizecollumn = size_collumns();
         using std::views::iota;
         for (size_t i : iota(0ull, this->size()))
