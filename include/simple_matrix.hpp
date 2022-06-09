@@ -143,13 +143,18 @@ namespace simple {
         std::string pretty () const noexcept;
         /** @} */
 
-        /** @fn matrix<T>& operator+= (const matrix<T>& A)
+        /** @fn matrix<T>& operator+= (const matrix<T>&)
           * @brief Перегрузка операции сложения
           * @param A Матрица с которой будет произведено сложение
           * @return Ссылка на текущий экземпляр класса
           */
         matrix<T>& operator+= (const matrix<T>& A);
 
+        /** @fn matrix<T>& operator-= (const matrix<T>&)
+          * @brief Перегрузка операции вычитания
+          * @param A Матрица которая будет вычтена
+          * @return Ссылка на текущий экземпляр класса
+          */
         matrix<T>& operator-= (const matrix<T>& A);
 
         matrix<T>& operator*= (const matrix<T>& B);
